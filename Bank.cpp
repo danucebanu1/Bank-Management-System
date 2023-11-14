@@ -40,6 +40,7 @@ bool autentificare()
                 cout<<endl;
                 Sleep(1250);
                 system("cls");
+                exit(0);
             }
             else
             {
@@ -106,6 +107,7 @@ void inregistrarile_noi()
         myfile.open(IDNP + ".txt"); 
         myfile<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
         myfile.close();
+        exit(0);
         }
     }
 }
