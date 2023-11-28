@@ -1,4 +1,3 @@
-Găsește mai repede ceea ce-ți trebuie … Pagina de pornire este noua pagină de destinație și afișează cele mai relevante fișiere și dosare
 #include <iostream>
 #include <bits/stdc++.h>
 #include <windows.h>
