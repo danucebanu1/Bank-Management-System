@@ -1,11 +1,41 @@
+Găsește mai repede ceea ce-ți trebuie … Pagina de pornire este noua pagină de destinație și afișează cele mai relevante fișiere și dosare
 #include <iostream>
 #include <bits/stdc++.h>
 #include <windows.h>
 #include <fstream>
 using namespace std;
 
+void meniu_principal()
+{
+
+}
+
 void schimb_valutar()
 {
+float MDL=1,USD=17.9802,EUR=19.2739,GBP=22.0797,TRY=0.6278,RON=3.8762,UAH=0.4949,RUB=0.1979;
+int answer;
+float answer1;
+cout<<"Introdu valuta:";
+cin>>answer;
+switch(answer)
+{
+    case 1 : 
+    cout<<"Introdu valoarea in MDL:";
+    cin>>answer1;
+    cout<<answer1<<" MDL este echivalent cu "<<answer1/USD<<" USD"<<endl;
+    break;
+    case 2 :
+    cout<<"Introdu valoarea in MDL:";
+    cin>>answer1;
+    cout<<answer1<<" MDL este echivalent cu "<<answer1/EUR<<" EUR"<<endl;
+    break;
+    case 3 :
+    cout<<"Introdu valoarea in MDL:";
+    cin>>answer1;
+    cout<<answer1<<" MDL este echivalent cu "<<answer1/GBP<<" GBP"<<endl;
+    break;
+    
+}
 
 }
 bool autentificare()
@@ -39,8 +69,7 @@ bool autentificare()
                 cout<<"Bine ai revenit,"<<nm<<endl;
                 cout<<endl;
                 Sleep(1250);
-                system("cls");
-                exit(0);
+                meniu_principal();
             }
             else
             {
@@ -66,7 +95,7 @@ void inregistrarile_noi()
     cin>>prenume;
     cout<<"Introdu o parola:";
     cin>>password;
-    if(password.length() > 6 )
+    if(password.length() < 6 )
     {
         system("Color F4");
         cout<<"Parola este prea scurta,incearca din nou"<<endl;
