@@ -6,7 +6,16 @@ using namespace std;
 
 void meniu_principal()
 {
-
+system("Color F9");
+cout<<"ooo        ooooo            o8o                   ooo        ooooo                                   "<<endl;
+cout<<"`88.       .888'            `''                   `88.       .888'                                   "<<endl;
+cout<<" 888b     d'888   .oooo.   oooo  ooo. .oo.         888b     d'888   .ooooo.  ooo. .oo.   oooo  oooo  "<<endl;
+cout<<" 8 Y88. .P  888  `P  )88b  `888  `888P'Y88b        8 Y88. .P  888  d88' `88b `888P'Y88b  `888  `888  "<<endl;
+cout<<" 8  `888'   888   .oP'888   888   888   888        8  `888'   888  888ooo888  888   888   888   888  "<<endl;
+cout<<" 8    Y     888  d8(  888   888   888   888        8    Y     888  888    .o  888   888   888   888  "<<endl;
+cout<<"o8o        o888o `Y888""8o o888o o888o o888o       o8o        o888o `Y8bod8P' o888o o888o  `V88V'V8P' "<<endl;
+cout<<endl;
+cout<<"Bine ai revenit in cont ";
 }
 
 void schimb_valutar()
@@ -65,9 +74,10 @@ bool autentificare()
             if (id == IDNP && pw == password && nm == nume && pn == prenume)
             {
                 system("Color F9");
-                cout<<"Bine ai revenit,"<<nm<<endl;
                 cout<<endl;
-                Sleep(1250);
+                cout<<endl;
+                Sleep(1050);
+                system("cls");
                 meniu_principal();
             }
             else
