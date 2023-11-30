@@ -1,21 +1,56 @@
+
 #include <iostream>
 #include <bits/stdc++.h>
 #include <windows.h>
 #include <fstream>
 using namespace std;
 
-void meniu_principal()
+string IDNP,password,nume,prenume;
+string id,pw,nm,pn;
+int a;
+string balance;
+
+void main_menu()
 {
-system("Color F9");
-cout<<"ooo        ooooo            o8o                   ooo        ooooo                                   "<<endl;
-cout<<"`88.       .888'            `''                   `88.       .888'                                   "<<endl;
-cout<<" 888b     d'888   .oooo.   oooo  ooo. .oo.         888b     d'888   .ooooo.  ooo. .oo.   oooo  oooo  "<<endl;
-cout<<" 8 Y88. .P  888  `P  )88b  `888  `888P'Y88b        8 Y88. .P  888  d88' `88b `888P'Y88b  `888  `888  "<<endl;
-cout<<" 8  `888'   888   .oP'888   888   888   888        8  `888'   888  888ooo888  888   888   888   888  "<<endl;
-cout<<" 8    Y     888  d8(  888   888   888   888        8    Y     888  888    .o  888   888   888   888  "<<endl;
-cout<<"o8o        o888o `Y888""8o o888o o888o o888o       o8o        o888o `Y8bod8P' o888o o888o  `V88V'V8P' "<<endl;
-cout<<endl;
-cout<<"Bine ai revenit in cont ";
+    int a;
+    ifstream file(IDNP+ "balance" + "txt");
+    system("Color F9");
+                cout<<endl;
+                cout<<endl;
+                Sleep(1050);
+                system("cls");
+                cout<<"ooo        ooooo            o8o                   ooo        ooooo                                   "<<endl;
+                cout<<"`88.       .888'            `''                   `88.       .888'                                   "<<endl;
+                cout<<" 888b     d'888   .oooo.   oooo  ooo. .oo.         888b     d'888   .ooooo.  ooo. .oo.   oooo  oooo  "<<endl;
+                cout<<" 8 Y88. .P  888  `P  )88b  `888  `888P'Y88b        8 Y88. .P  888  d88' `88b `888P'Y88b  `888  `888  "<<endl;
+                cout<<" 8  `888'   888   .oP'888   888   888   888        8  `888'   888  888ooo888  888   888   888   888  "<<endl;
+                cout<<" 8    Y     888  d8(  888   888   888   888        8    Y     888  888    .o  888   888   888   888  "<<endl;
+                cout<<"o8o        o888o `Y888""8o o888o o888o o888o      o8o        o888o `Y8bod8P' o888o o888o  `V88V'V8P' "<<endl;
+                cout<<endl; 
+                cout<<"Welcome Back,"<<prenume<<"                                           Available Balance"<<balance<<" MDL";
+                cout<<endl;
+                cout<<"[1] Deposit Amount"<<endl;
+                cout<<"[2] Withdraw Amount"<<endl;
+                cout<<"[3] Transfer Money"<<endl;
+                cout<<"[4] Add New Card"<<endl;
+                cout<<endl;
+                cout<<"[99] Exit"<<endl;
+                cout<<endl;
+                cout<<endl;
+                cout<<"Enter an option:";
+                cin>>a;
+                switch(a)
+                {
+                    case 1 : 
+                    cout<<endl;
+                    cout<<"Introdu suma:";
+                    cin>>balance;
+                    ofstream file;
+                    file.open(IDNP+"balance"+".txt");
+                    file<<balance;
+                    file.close();
+                    break;
+                }
 }
 
 void schimb_valutar()
@@ -49,9 +84,7 @@ switch(answer)
 bool autentificare()
 {
     system("Color F0");
-    string IDNP,password,nume,prenume;
-    string id,pw,nm,pn;
-    
+
     cout<<"Introdu Numele:";
     cin>>nume;
     cout<<"Introdu Prenumele:";
@@ -72,24 +105,9 @@ bool autentificare()
         while (file >> id >> pw >> nm >> pn)
         {
             if (id == IDNP && pw == password && nm == nume && pn == prenume)
-            {
-                system("Color F9");
-                cout<<endl;
-                cout<<endl;
-                Sleep(1050);
-                system("cls");
-                meniu_principal();
-            }
-            else
-            {
-                system("Color F4");
-                cout<<"Login invalid nu exista asa cont "<<endl;
-                Sleep(1250);
-                system("cls");
-                autentificare();
-            }
-        }
-        return 0;     
+            main_menu();
+            return 1;
+        }  
 }
 void inregistrarile_noi()
 {
