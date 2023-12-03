@@ -3,54 +3,87 @@
 #include <bits/stdc++.h>
 #include <windows.h>
 #include <fstream>
+#include <sstream>
 using namespace std;
 
 string IDNP,password,nume,prenume;
 string id,pw,nm,pn;
 int a;
-string balance;
+string balance,b;
 
+int main();
+void inregistrarile_noi();
+bool autentificare();
+void schimb_valutar();
+void main_menu();
+void deposit();
+void logout();
+
+void logout()
+{
+    Sleep(200);
+    system("cls");
+    main();
+}
+
+void deposit()
+{
+    ifstream file(IDNP + "balance" + "txt");
+    cout<<"    Enter amount:";
+    cin>>balance;
+    if(!file.is_open())
+    {
+        ofstream file;
+        file.open(IDNP + "balance" + ".txt");
+        file << balance;
+        file.close();
+    }
+    else
+    {
+        file >> balance;
+        balance += balance;
+    }
+    cout<<endl;
+    cout<<"    You just replenished your account with "<<balance<<"$";
+}
 void main_menu()
 {
     int a;
-    ifstream file(IDNP+ "balance" + "txt");
-    system("Color F9");
-                cout<<endl;
-                cout<<endl;
-                Sleep(1050);
-                system("cls");
-                cout<<"ooo        ooooo            o8o                   ooo        ooooo                                   "<<endl;
-                cout<<"`88.       .888'            `''                   `88.       .888'                                   "<<endl;
-                cout<<" 888b     d'888   .oooo.   oooo  ooo. .oo.         888b     d'888   .ooooo.  ooo. .oo.   oooo  oooo  "<<endl;
-                cout<<" 8 Y88. .P  888  `P  )88b  `888  `888P'Y88b        8 Y88. .P  888  d88' `88b `888P'Y88b  `888  `888  "<<endl;
-                cout<<" 8  `888'   888   .oP'888   888   888   888        8  `888'   888  888ooo888  888   888   888   888  "<<endl;
-                cout<<" 8    Y     888  d8(  888   888   888   888        8    Y     888  888    .o  888   888   888   888  "<<endl;
-                cout<<"o8o        o888o `Y888""8o o888o o888o o888o      o8o        o888o `Y8bod8P' o888o o888o  `V88V'V8P' "<<endl;
-                cout<<endl; 
-                cout<<"Welcome Back,"<<prenume<<"                                           Available Balance"<<balance<<" MDL";
-                cout<<endl;
-                cout<<"[1] Deposit Amount"<<endl;
-                cout<<"[2] Withdraw Amount"<<endl;
-                cout<<"[3] Transfer Money"<<endl;
-                cout<<"[4] Add New Card"<<endl;
-                cout<<endl;
-                cout<<"[99] Exit"<<endl;
-                cout<<endl;
-                cout<<endl;
-                cout<<"Enter an option:";
-                cin>>a;
-                switch(a)
-                {
-                    case 1 : 
-                    cout<<endl;
-                    cout<<"Introdu suma:";
-                    cin>>balance;
-                    ofstream file;
-                    file.open(IDNP+"balance"+".txt");
-                    file<<balance;
-                    file.close();
-                    break;
-                }
+    ifstream file;
+    file.open(IDNP+ "balance" + "txt");
+    file >> balance;
+    if(!file.is_open())
+    cout<<"File can't be opened"<<endl;
+    cout<<endl;
+    Sleep(500);
+    system("cls");
+    cout<<R"(
+    ___  ___      _        ___  ___                 
+    |  \/  |     (_)       |  \/  |                 
+    | .  . | __ _ _ _ __   | .  . | ___ _ __  _   _ 
+    | |\/| |/ _` | | '_ \  | |\/| |/ _ \ '_ \| | | |
+    | |  | | (_| | | | | | | |  | |  __/ | | | |_| |
+    \_|  |_/\__,_|_|_| |_| \_|  |_/\___|_| |_|\__,_|)"<<endl;
+    cout<<endl; 
+    cout<<"    Welcome Back,"<<prenume<<"                        Available Balance "<<balance<<"$";
+    file.close();
+    cout<<endl;
+    cout<<"    [1] Deposit Amount"<<endl;
+    cout<<"    [2] Withdraw Amount"<<endl;
+    cout<<"    [3] Transfer Money"<<endl;
+    cout<<"    [4] Add New Card"<<endl;
+    cout<<"    [5] Logout"<<endl;
+    cout<<endl;
+    cout<<"    [99] Exit"<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<"    Enter an option:";
+    cin>>a;
+    switch(a)
+    {
+        case 1 : deposit(); break;
+        case 5 : logout(); break;
+    }             
 }
 
 void schimb_valutar()
@@ -83,49 +116,55 @@ switch(answer)
 }
 bool autentificare()
 {
-    system("Color F0");
-
-    cout<<"Introdu Numele:";
+    system("Color 0F");
+    cout<<"Enter Name:";
     cin>>nume;
-    cout<<"Introdu Prenumele:";
+    cout<<"Enter Surname:";
     cin>>prenume;
-    cout<<"Introdu IDNP-ul:";
+    cout<<"Enter your Identification Number:";
     cin>>IDNP;
+    cout<<"Enter Password:";
+    cin>>password;
     ifstream file(IDNP + ".txt");
         if(!file.is_open())
         {
-            system("Color F4");
-            cout << "Login invalid,nu exista asa cont "<<endl; 
+            system("Color 04");
+            cout << "Invalid Credentials."<<endl; 
             Sleep(750);
             system("cls");
             autentificare();  
         }
-        cout<<"Introdu parola:";
-        cin>>password;
         while (file >> id >> pw >> nm >> pn)
         {
             if (id == IDNP && pw == password && nm == nume && pn == prenume)
             main_menu();
-            return 1;
+            else
+            {
+                system("Color 04");
+                cout<<"Invalid Credentials."<<endl;
+                Sleep(750);
+                system("cls");
+                autentificare();
+            }
         }  
 }
 void inregistrarile_noi()
 {
-    system("Color F0");
+    system("Color 0F");
     string nume,prenume,password;
     string IDNP;
     cout<<endl;
-    cout<<"Bine ati venit la Moldincombank!"<<endl;
-    cout<<"Nume:";
+    cout<<"Welcome to National Bank of Moldova."<<endl;
+    cout<<"Name:";
     cin>>nume;
-    cout<<"Prenume:";
+    cout<<"Surname:";
     cin>>prenume;
-    cout<<"Introdu o parola:";
+    cout<<"Enter a pasword:";
     cin>>password;
     if(password.length() < 6 )
     {
-        system("Color F4");
-        cout<<"Parola este prea scurta,incearca din nou"<<endl;
+        system("Color 04");
+        cout<<"Password lenght should be at least 6 characters,try again."<<endl;
         Sleep(1200);
         system("cls");
         inregistrarile_noi();
@@ -134,8 +173,8 @@ void inregistrarile_noi()
     cin>>IDNP;
     if(IDNP.length() != 13)
     {
-        system("Color F4");
-        cout << "Codul de identificare este prea scurt sau prea lung,incearca din nou!";
+        system("Color 04");
+        cout << "The Identification Number should be 13 characters,try again.";
         Sleep(1200);
         system("cls");
         inregistrarile_noi();
@@ -147,23 +186,25 @@ void inregistrarile_noi()
         
         if (file.is_open())
         {
-            system("Color F4");
+            system("Color 04");
             cout<<endl;
-            cout << "Un cont sub acest IDNP este deja inregistrat,autentificati-va."<<endl;
+            cout << "An Acconut under this Identification Number was already created,you can choose to authentificate."<<endl;
             Sleep(1200);
             system("cls");
-            autentificare();
+            main();
         }
         else
         {
-        system("Color F2");
+        system("Color 02");
         cout<<endl;
-        cout<<"Ai creat un cont cu succes,acum poti alege optiune de Autentificare in Cont!";
+        cout<<"You created an account with succes,you can log into your Bank Account now!";
         ofstream myfile; // Creates a file
         myfile.open(IDNP + ".txt"); 
         myfile<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
         myfile.close();
-        exit(0);
+        Sleep(1200);
+        system("cls");
+        main();
         }
     }
 }
@@ -172,27 +213,26 @@ void inregistrarile_noi()
 int main() 
 {
     int optiune;
-    system("Color F0");
-    cout<<" __   __  _______  ___      ______   ___   __    _  _______  _______  __   __  _______  _______  __    _  ___   _ "<<endl;
-    cout<<"|  |_|  ||       ||   |    |      | |   | |  |  | ||       ||       ||  |_|  ||  _    ||   _   ||  |  | ||   | | |"<<endl;
-    cout<<"|       ||   _   ||   |    |  _    ||   | |   |_| ||       ||   _   ||       || |_|   ||  |_|  ||   |_| ||   |_| |"<<endl;
-    cout<<"|       ||  | |  ||   |    | | |   ||   | |       ||       ||  | |  ||       ||       ||       ||       ||      _|"<<endl;
-    cout<<"|       ||  |_|  ||   |___ | |_|   ||   | |  _    ||      _||  |_|  ||       ||  _   | |       ||  _    ||     |_ "<<endl;
-    cout<<"| ||_|| ||       ||       ||       ||   | | | |   ||     |_ |       || ||_|| || |_|   ||   _   || | |   ||    _  |"<<endl;
-    cout<<"|_|   |_||_______||_______||______| |___| |_|  |__||_______||_______||_|   |_||_______||__| |__||_|  |__||___| |_|"<<endl;
-    cout<<endl;
-    cout<<"                                                                                       Made with love by GUESS <3 "<<endl;
-    cout<<endl;
-    cout<<"Bine ati venit la Moldincombank"<<endl;
-    cout<<endl;
-    cout<<"[1] Autentificarea in contul bancar"<<endl;
-    cout<<"[2] Inregistrare a unui cont bancar nou"<<endl;
-    cout<<"[3] Schimb Valutar"<<endl;
-    cout<<endl;
-    cout<<"[99] Iesire din sistem"<<endl;
+    system("Color 0F");
+    cout<<R"( 
+ _______          __  .__                     .__    __________                __             _____     _____         .__       .___                   
+ \      \ _____ _/  |_|__| ____   ____ _____  |  |   \______   \_____    ____ |  | __   _____/ ____\   /     \   ____ |  |    __| _/_______  _______   
+ /   |   \\__  \\   __\  |/  _ \ /    \\__  \ |  |    |    |  _/\__  \  /    \|  |/ /  /  _ \   __\   /  \ /  \ /  _ \|  |   / __ |/  _ \  \/ /\__  \  
+/    |    \/ __ \|  | |  (  <_> )   |  \/ __ \|  |__  |    |   \ / __ \|   |  \    <  (  <_> )  |    /    Y    (  <_> )  |__/ /_/ (  <_> )   /  / __ \_
+\____|__  (____  /__| |__|\____/|___|  (____  /____/  |______  /(____  /___|  /__|_ \  \____/|__|    \____|__  /\____/|____/\____ |\____/ \_/  (____  /
+        \/     \/                    \/     \/               \/      \/     \/     \/                        \/                  \/                 \/ )"<<endl;
     cout<<endl;
     cout<<endl;
-    cout<<"Alegeti o optiune:";
+    cout<<"Welcome to National Bank of Moldova                                                    Made with love by guess <3 "<<endl;
+    cout<<endl;
+    cout<<"[1] Login into your Bank Account"<<endl;
+    cout<<"[2] Register a new Bank Account"<<endl;
+    cout<<"[3] Currency Exchange"<<endl;
+    cout<<endl;
+    cout<<"[99] Exit"<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<"Choose an option:";
     cin>>optiune;
     switch(optiune)
     {
@@ -201,11 +241,10 @@ int main()
         case 3 : schimb_valutar(); break;
         case 99 : exit(0); break;
         default : 
-        system("Color F4");
-        cout<<"Optiune inexistenta!"<<endl;
+        system("Color 04");
+        cout<<"Choose a valid option!"<<endl;
         Sleep(1000);
         system("cls");
         main();
     }
 }
-    
