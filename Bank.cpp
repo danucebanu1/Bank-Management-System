@@ -6,10 +6,20 @@
 #include <sstream>
 using namespace std;
 
-string IDNP,password,nume,prenume;
+string IDNP,password,nume,prenume,IDNP2;
 string id,pw,nm,pn;
 int a;
-string balance,b;
+int balance,b,balance2,amount;
+
+/* Color id	Color	Color id	Color
+    1	    Blue	       9	Light Blue
+    2	    Green	       0	Black
+    3	    Aqua	       A	Light Green
+    4	    Red	           B	Light Aqua
+    5	    Purple	       C	Light Red
+    6	    Yellow	       D	Light Purple
+	7       White	       E	Light Yellow
+    8	    Gray	       F	Bright White*/
 
 int main();
 void inregistrarile_noi();
@@ -18,46 +28,117 @@ void schimb_valutar();
 void main_menu();
 void deposit();
 void logout();
-
+void transfer();
+void withdraw();
+void transfer()
+{
+    ifstream fileIn(IDNP + "balance" + ".txt");
+    cout<<"    Enter account IDNP:";
+    cin>>IDNP2;
+    ifstream fileN(IDNP2 + "balance" + ".txt" );
+    if(!fileN.is_open())
+    {
+        system("Color 04");
+        cout<<"    This account appears to not exist"<<endl;
+        Sleep(500);
+        system("cls");
+        main_menu();
+    }
+    else
+    {
+        fileIn>>balance;
+        fileIn.close();
+        fileN>>balance2;
+        fileN.close();
+        cout<<"    Enter amount(maximum "<<balance<<"):";
+        cin>>amount;
+        if(amount>balance)
+        {
+            system("Color 04");
+            cout<<"    You don't have enough money,try again."<<endl;
+            Sleep(500);
+            system("cls");
+            main_menu();
+        }
+        else
+        {
+            balance-=amount;
+            balance2+=amount;
+            ofstream fileOut(IDNP + "balance" + ".txt");
+            fileOut<<balance;
+            fileOut.close();
+            ofstream fileout(IDNP2 + "balance" + ".txt");
+            fileout<<balance2;
+            fileout.close();
+            cout<<"    You succesfully transferred"<<amount<<" to "<<IDNP2<<endl;
+            Sleep(500);
+            system("cls");
+            main_menu();
+        }
+    }
+}
+void withdraw()
+{
+    int b,balance;
+    ifstream fileIn(IDNP + "balance" + ".txt");
+    cout<<"    Enter amount:";
+    fileIn >> balance;
+    cin>>b;
+    fileIn.close(); 
+    if(balance<b)
+    {
+        system("Color 04");
+        cout<<"    You don't have sufficient funds,try again."<<endl;
+        Sleep(300);
+        system("cls");
+        main_menu();
+    }
+    else
+    {
+    balance -= b; 
+    ofstream fileOut;
+    fileOut.open(IDNP + "balance" + ".txt");
+    fileOut << balance;
+    fileOut.close();
+    cout<<"    You just succesfully withdrawn "<<b<<"$"<<endl;
+    main_menu();
+    }
+    
+}
 void logout()
 {
     Sleep(200);
     system("cls");
     main();
 }
-
 void deposit()
 {
-    ifstream file(IDNP + "balance" + "txt");
+    int b,balance;
+    ifstream fileIn(IDNP + "balance" + ".txt");
     cout<<"    Enter amount:";
-    cin>>balance;
-    if(!file.is_open())
-    {
-        ofstream file;
-        file.open(IDNP + "balance" + ".txt");
-        file << balance;
-        file.close();
-    }
-    else
-    {
-        file >> balance;
-        balance += balance;
-    }
-    cout<<endl;
-    cout<<"    You just replenished your account with "<<balance<<"$";
+    fileIn >> balance;
+    cin>>b;
+    fileIn.close(); 
+    balance += b; 
+    ofstream fileOut;
+    fileOut.open(IDNP + "balance" + ".txt");
+    fileOut << balance;
+    fileOut.close();
+    cout<<"    You just replenished your account with "<<b<<"$"<<endl;
+    main_menu();
 }
 void main_menu()
 {
+    system("Color 0F");
     int a;
-    ifstream file;
-    file.open(IDNP+ "balance" + "txt");
-    file >> balance;
-    if(!file.is_open())
-    cout<<"File can't be opened"<<endl;
+    ifstream file(IDNP + "balance" + ".txt");
+    file>>balance;
+    file.close();
     cout<<endl;
     Sleep(500);
     system("cls");
-    cout<<R"(
+    cout<<
+    R"(
     ___  ___      _        ___  ___                 
     |  \/  |     (_)       |  \/  |                 
     | .  . | __ _ _ _ __   | .  . | ___ _ __  _   _ 
@@ -66,13 +147,11 @@ void main_menu()
     \_|  |_/\__,_|_|_| |_| \_|  |_/\___|_| |_|\__,_|)"<<endl;
     cout<<endl; 
     cout<<"    Welcome Back,"<<prenume<<"                        Available Balance "<<balance<<"$";
-    file.close();
     cout<<endl;
     cout<<"    [1] Deposit Amount"<<endl;
     cout<<"    [2] Withdraw Amount"<<endl;
     cout<<"    [3] Transfer Money"<<endl;
-    cout<<"    [4] Add New Card"<<endl;
-    cout<<"    [5] Logout"<<endl;
+    cout<<"    [4] Logout"<<endl;
     cout<<endl;
     cout<<"    [99] Exit"<<endl;
     cout<<endl;
@@ -82,7 +161,11 @@ void main_menu()
     switch(a)
     {
         case 1 : deposit(); break;
-        case 5 : logout(); break;
+        case 2 : withdraw(); break;
+        case 3 : transfer(); break;
+        case 4 : logout(); break;
+        case 99 : break;
+        default : system("Color 04"); cout<<"Enter a valid option."; Sleep(500); system("cls"); main_menu();
     }             
 }
 
@@ -208,29 +291,24 @@ void inregistrarile_noi()
         }
     }
 }
-
-
 int main() 
 {
     int optiune;
     system("Color 0F");
-    cout<<R"( 
- _______          __  .__                     .__    __________                __             _____     _____         .__       .___                   
- \      \ _____ _/  |_|__| ____   ____ _____  |  |   \______   \_____    ____ |  | __   _____/ ____\   /     \   ____ |  |    __| _/_______  _______   
- /   |   \\__  \\   __\  |/  _ \ /    \\__  \ |  |    |    |  _/\__  \  /    \|  |/ /  /  _ \   __\   /  \ /  \ /  _ \|  |   / __ |/  _ \  \/ /\__  \  
-/    |    \/ __ \|  | |  (  <_> )   |  \/ __ \|  |__  |    |   \ / __ \|   |  \    <  (  <_> )  |    /    Y    (  <_> )  |__/ /_/ (  <_> )   /  / __ \_
-\____|__  (____  /__| |__|\____/|___|  (____  /____/  |______  /(____  /___|  /__|_ \  \____/|__|    \____|__  /\____/|____/\____ |\____/ \_/  (____  /
-        \/     \/                    \/     \/               \/      \/     \/     \/                        \/                  \/                 \/ )"<<endl;
+    cout<<R"(    
+    _   __      __  _                   __   __                __      __  ___      __    __                    
+   / | / /___ _/ /_(_)___  ____  ____ _/ /  / /_  ____ _____  / /__   /  |/  /___  / /___/ /___ _   ______ _    
+  /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / __ \/ __ `/ __ \/ //_/  / /|_/ / __ \/ / __  / __ \ | / / __ `/    
+ / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / /_/ / /_/ / / / / ,<    / /  / / /_/ / / /_/ / /_/ / |/ / /_/ /     
+/_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_.___/\__,_/_/ /_/_/|_|  /_/  /_/\____/_/\__,_/\____/|___/\__,_/      )"<<endl;
     cout<<endl;
-    cout<<endl;
-    cout<<"Welcome to National Bank of Moldova                                                    Made with love by guess <3 "<<endl;
+    cout<<"Welcome to National Bank of Moldova                                Made with love by guess <3 "<<endl;
     cout<<endl;
     cout<<"[1] Login into your Bank Account"<<endl;
     cout<<"[2] Register a new Bank Account"<<endl;
     cout<<"[3] Currency Exchange"<<endl;
     cout<<endl;
     cout<<"[99] Exit"<<endl;
-    cout<<endl;
     cout<<endl;
     cout<<"Choose an option:";
     cin>>optiune;
