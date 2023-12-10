@@ -11,16 +11,6 @@ string id,pw,nm,pn;
 int a;
 int balance,b,balance2,amount;
 
-/* Color id	Color	Color id	Color
-    1	    Blue	       9	Light Blue
-    2	    Green	       0	Black
-    3	    Aqua	       A	Light Green
-    4	    Red	           B	Light Aqua
-    5	    Purple	       C	Light Red
-    6	    Yellow	       D	Light Purple
-	7       White	       E	Light Yellow
-    8	    Gray	       F	Bright White*/
-
 int main();
 void inregistrarile_noi();
 bool autentificare();
@@ -30,16 +20,17 @@ void deposit();
 void logout();
 void transfer();
 void withdraw();
+
 void transfer()
 {
     ifstream fileIn(IDNP + "balance" + ".txt");
-    cout<<"    Enter account IDNP:";
+    cout<<"Enter account IDNP:";
     cin>>IDNP2;
     ifstream fileN(IDNP2 + "balance" + ".txt" );
     if(!fileN.is_open())
     {
         system("Color 04");
-        cout<<"    This account appears to not exist"<<endl;
+        cout<<"This account appears to not exist"<<endl;
         Sleep(500);
         system("cls");
         main_menu();
@@ -50,12 +41,12 @@ void transfer()
         fileIn.close();
         fileN>>balance2;
         fileN.close();
-        cout<<"    Enter amount(maximum "<<balance<<"):";
+        cout<<"Enter amount(maximum "<<balance<<"):";
         cin>>amount;
         if(amount>balance)
         {
             system("Color 04");
-            cout<<"    You don't have enough money,try again."<<endl;
+            cout<<"You don't have enough money,try again."<<endl;
             Sleep(500);
             system("cls");
             main_menu();
@@ -70,7 +61,7 @@ void transfer()
             ofstream fileout(IDNP2 + "balance" + ".txt");
             fileout<<balance2;
             fileout.close();
-            cout<<"    You succesfully transferred"<<amount<<" to "<<IDNP2<<endl;
+            cout<<"You succesfully transferred "<<amount<<" to "<<IDNP2<<endl;
             Sleep(500);
             system("cls");
             main_menu();
@@ -81,14 +72,14 @@ void withdraw()
 {
     int b,balance;
     ifstream fileIn(IDNP + "balance" + ".txt");
-    cout<<"    Enter amount:";
+    cout<<" Enter amount:";
     fileIn >> balance;
     cin>>b;
     fileIn.close(); 
     if(balance<b)
     {
         system("Color 04");
-        cout<<"    You don't have sufficient funds,try again."<<endl;
+        cout<<"You don't have sufficient funds,try again."<<endl;
         Sleep(300);
         system("cls");
         main_menu();
@@ -100,7 +91,7 @@ void withdraw()
     fileOut.open(IDNP + "balance" + ".txt");
     fileOut << balance;
     fileOut.close();
-    cout<<"    You just succesfully withdrawn "<<b<<"$"<<endl;
+    cout<<"You just succesfully withdrawn "<<b<<"$"<<endl;
     main_menu();
     }
     
@@ -115,7 +106,7 @@ void deposit()
 {
     int b,balance;
     ifstream fileIn(IDNP + "balance" + ".txt");
-    cout<<"    Enter amount:";
+    cout<<"Enter amount:";
     fileIn >> balance;
     cin>>b;
     fileIn.close(); 
@@ -124,7 +115,7 @@ void deposit()
     fileOut.open(IDNP + "balance" + ".txt");
     fileOut << balance;
     fileOut.close();
-    cout<<"    You just replenished your account with "<<b<<"$"<<endl;
+    cout<<"You just replenished your account with "<<b<<"$"<<endl;
     main_menu();
 }
 void main_menu()
@@ -138,25 +129,23 @@ void main_menu()
     Sleep(500);
     system("cls");
     cout<<
-    R"(
-    ___  ___      _        ___  ___                 
-    |  \/  |     (_)       |  \/  |                 
-    | .  . | __ _ _ _ __   | .  . | ___ _ __  _   _ 
-    | |\/| |/ _` | | '_ \  | |\/| |/ _ \ '_ \| | | |
-    | |  | | (_| | | | | | | |  | |  __/ | | | |_| |
-    \_|  |_/\__,_|_|_| |_| \_|  |_/\___|_| |_|\__,_|)"<<endl;
+    R"(   
+   __  ___     _          __  ___             
+  /  |/  /__ _(_)__      /  |/  /__ ___  __ __
+ / /|_/ / _ `/ / _ \    / /|_/ / -_) _ \/ // /
+/_/  /_/\_,_/_/_//_/   /_/  /_/\__/_//_/\_,_/ )"<<endl;
     cout<<endl; 
-    cout<<"    Welcome Back,"<<prenume<<"                        Available Balance "<<balance<<"$";
+    cout<<"Welcome Back,"<<prenume<<"                        Available Balance "<<balance<<"$";
     cout<<endl;
-    cout<<"    [1] Deposit Amount"<<endl;
-    cout<<"    [2] Withdraw Amount"<<endl;
-    cout<<"    [3] Transfer Money"<<endl;
-    cout<<"    [4] Logout"<<endl;
+    cout<<"[1] Deposit Amount"<<endl;
+    cout<<"[2] Withdraw Amount"<<endl;
+    cout<<"[3] Transfer Money"<<endl;
+    cout<<"[4] Logout"<<endl;
     cout<<endl;
-    cout<<"    [99] Exit"<<endl;
+    cout<<"[99] Exit"<<endl;
     cout<<endl;
     cout<<endl;
-    cout<<"    Enter an option:";
+    cout<<"Enter an option:";
     cin>>a;
     switch(a)
     {
@@ -326,3 +315,13 @@ int main()
         main();
     }
 }
+
+/* Color id	Color	Color id	Color
+    1	    Blue	       9	Light Blue
+    2	    Green	       0	Black
+    3	    Aqua	       A	Light Green
+    4	    Red	           B	Light Aqua
+    5	    Purple	       C	Light Red
+    6	    Yellow	       D	Light Purple
+	7       White	       E	Light Yellow
+    8	    Gray	       F	Bright White*/
