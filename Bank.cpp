@@ -51,7 +51,7 @@ void change_name()
         ofstream fout(IDNP + "data.txt");
         fout<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume;
         fout.close();
-        cout<<"Name and Surname changed succesfully!"<<endl;
+        cout<<green<<"Name and Surname changed succesfully!"<<endl;
         sleep(1);
         system("clear");
         main_menu();
@@ -60,10 +60,17 @@ void change_name()
     {
         ofstream fiout(IDNP + "data.txt");
         fiout<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
-        cout<<"Name changed succesfully!"<<endl;
+        cout<<green<<"Name changed succesfully!"<<endl;
         sleep(1);
         system("clear");
         main_menu();
+    }
+    else
+    {
+        cout<<red;
+        sleep(1);
+        system("clear");
+        change_name();
     }
 }
 
@@ -74,7 +81,7 @@ void change_password()
     cin>>password1;
     if(password1 != password)
     {
-        cout<<"Incorrect password,try again"<<endl;
+        cout<<red<<"Incorrect password,try again"<<endl;
         sleep(1);
         system("clear");
         change_password();
@@ -90,15 +97,15 @@ void change_password()
             ofstream fout(IDNP + "data.txt");
             fout<<IDNP<<" "<<password1<<" "<<nume<<" "<<prenume;
             fout.close();
-            cout<<"Password changed successfully!"<<endl;
+            cout<<green<<"Password changed successfully!"<<endl;
             sleep(1);
             system("clear");
             main();
         }
         else
         {
-            cout<<"Passwords do not match, try again."<<endl;
-             sleep(1);
+            cout<<red<<"Passwords do not match, try again."<<endl;
+            sleep(1);
             system("clear");
             change_password();
         }
@@ -117,7 +124,7 @@ void modify_account()
     {
         case 1 : change_password(); break;
         case 2 : change_name(); break;
-        default :  sleep(1); modify_account();
+        default : sleep(1); cout<<red; modify_account();
     }
 }
 
@@ -133,14 +140,14 @@ void close_account()
         {
             remove((IDNP + "data.txt").c_str()); 
             remove((IDNP + "balance.txt").c_str());
-            cout<<"We are sad seeing you leaving us behind,account deleted succesfully."<<endl;
+            cout<<magenta<<"We are sad seeing you leaving us behind,account deleted succesfully."<<endl;
             sleep(1);
             system("clear");
             main();
         }
         else
         {
-            cout<<"Passwords don't match,try again."<<endl;
+            cout<<red<<"Passwords don't match,try again."<<endl;
             close_account();
         }
     }
@@ -152,8 +159,7 @@ void close_account()
     }
     else
     {
-        cout<<red;
-        cout<<"Enter a valid option."<<endl;
+        cout<<red<<"Enter a valid option."<<endl;
         sleep(1);
         system("clear");
         main_menu();
@@ -169,7 +175,7 @@ void transfer()
     if(IDNP2==IDNP)
     {
         
-        cout<<"You can't send money to yourself."<<endl;
+        cout<<yellow<<"You can't send money to yourself."<<endl;
         sleep(1);
         transfer();
     }
@@ -177,7 +183,7 @@ void transfer()
     if(!fileN.is_open())
     {
         
-        cout<<"This account appears to not exist"<<endl;
+        cout<<red<<"This account appears to not exist"<<endl;
         sleep(1);
         system("clear");
         main_menu();
@@ -193,7 +199,7 @@ void transfer()
         if(amount>balance)
         {
 
-            cout<<"You don't have enough money,try again."<<endl;
+            cout<<red<<"You don't have enough money,try again."<<endl;
             sleep(1);
             system("clear");
             main_menu();
@@ -208,7 +214,7 @@ void transfer()
             ofstream fileout(IDNP2 + "balance" + ".txt");
             fileout<<balance2;
             fileout.close();
-            cout<<"You succesfully transferred "<<amount<<" to "<<IDNP2<<endl;
+            cout<<green<<"You succesfully transferred "<<amount<<" to "<<IDNP2<<endl;
             sleep(1);
             system("clear");
             main_menu();
@@ -225,7 +231,7 @@ void withdraw()
     fileIn.close(); 
     if(balance<b)
     {
-        cout<<"You don't have sufficient funds,try again."<<endl;
+        cout<<red<<"You don't have sufficient funds,try again."<<endl;
         sleep(1);
         system("clear");
         main_menu();
@@ -237,7 +243,7 @@ void withdraw()
     fileOut.open(IDNP + "balance" + ".txt");
     fileOut << balance;
     fileOut.close();
-    cout<<"You just succesfully withdrawn "<<b<<"$"<<endl;
+    cout<<green<<"You just succesfully withdrawn "<<b<<"$"<<endl;
     main_menu();
     } 
 }
@@ -260,7 +266,7 @@ void deposit()
     fileOut.open(IDNP + "balance" + ".txt");
     fileOut << balance;
     fileOut.close();
-    cout<<"You just replenished your account with "<<b<<"$"<<endl;
+    cout<<green<<"You just replenished your account with "<<b<<"$"<<endl;
     main_menu();
 }
 void main_menu()
@@ -299,7 +305,7 @@ void main_menu()
         case 5 : close_account(); break;
         case 6 : modify_account(); break;
         case 99 : break;
-        default : cout<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
+        default : cout<<red<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
     }             
 }
 
@@ -344,7 +350,7 @@ bool autentificare()
     ifstream file(IDNP + "data" + ".txt");
         if(!file.is_open())
         {
-            cout << "       Invalid Credentials."<<endl; 
+            cout << red << "       Invalid Credentials."<<endl; 
             sleep(1);
             system("clear");
             autentificare();  
@@ -355,7 +361,7 @@ bool autentificare()
             main_menu();
             else
             {
-                cout<<"       Invalid Credentials."<<endl;
+                cout<< red <<"       Invalid Credentials."<<endl;
                 sleep(1);
                 system("clear");
                 autentificare();
@@ -377,7 +383,7 @@ void inregistrarile_noi()
     cin>>password;
     if(password.length() < 6 )
     {
-        cout<<"       Password lenght should be at least 6 characters,try again."<<endl;
+        cout<< yellow << "       Password lenght should be at least 6 characters,try again."<<endl;
         sleep(1);
         system("clear");
         inregistrarile_noi();
@@ -386,7 +392,7 @@ void inregistrarile_noi()
     cin>>IDNP;
     if(IDNP.length() != 13)
     {
-        cout << "       The Identification Number should be 13 characters,try again.";
+        cout << yellow << "       The Identification Number should be 13 characters,try again.";
         sleep(1);
         system("clear");
         inregistrarile_noi();
@@ -399,7 +405,7 @@ void inregistrarile_noi()
         if (file.is_open())
         {
             cout<<endl;
-            cout << "       An Account under this Identification Number was already created,you can choose to authentificate."<<endl;
+            cout <<red<< "       An Account under this Identification Number was already created,you can choose to authentificate."<<endl;
             sleep(1);
             system("clear");
             main();
@@ -407,7 +413,7 @@ void inregistrarile_noi()
         else
         {
         cout<<endl;
-        cout<<"       You created an account with succes,you can log into your Bank Account now!";
+        cout<<green<<"       You created an account with succes,you can log into your Bank Account now!";
         ofstream myfile; // Creates a file
         myfile.open(IDNP + "data" + ".txt"); 
         myfile<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
@@ -442,7 +448,7 @@ int main()
         case 2 : inregistrarile_noi(); break;
         case 3 :  break;
         case 99 : exit(0); break;
-        default : sleep(1); system("clear"); main();
+        default : sleep(1); cout<<red; system("clear"); main();
     }
 }
 
