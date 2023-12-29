@@ -4,8 +4,23 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
+
+string generateCreditCardNumber(string prefix, int length)
+{
+    string cardNumber = prefix;
+    int additionalLength = length - prefix.length();
+    
+    while(additionalLength--)
+    {
+        int digit = rand() % 10;
+        cardNumber += to_string(digit);
+    }
+    
+    return cardNumber;
+}
 
 #define reset   "\x1B[0m"
 #define red     "\x1B[31m"
@@ -36,9 +51,90 @@ void close_account();
 void modify_account();
 void change_name();
 void change_password();
+void create_card();
+void classic();
+void gold();
+void platinum();
+void elite();
+void worldclass();
+
+void worldclass()
+{
+
+}
+
+void elite()
+{
+
+}
+
+void platinum()
+{
+
+}
+
+void gold()
+{
+
+}
+
+void classic()
+{
+    srand(time(0));
+    string cardnumber = generateCreditCardNumber("5188" , 16);
+    string cvv = generateCreditCardNumber("1" , 3);
+    cout<<"Advantages of the Mastercard Classic Card"<<endl;
+    cout<<"Fees - No annual fees"<<endl;
+    cout<<"Comfortable - Free P2P Transfers"<<endl;
+    cout<<"Maximum daily transfer - 1000$"<<endl;
+    cout<<"Price - No cost to create"<<endl;
+    cout<<"Fast - payment takes 6 seconds to process"<<endl;
+    cout<<endl;
+    cout<<"Are you sure you want to submit this card?[Y/N]:";
+    cin>>rs;
+    if(rs == 'Y' or rs=='y')
+    {
+        cout<<"Card Number:"<<cardnumber;
+        cout<<"CVV:"<<endl;
+        cout<<"Expiration Date:12/28"<<endl;
+        cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+        ofstream file(IDNP + cvv + "card.txt");
+        file << cardnumber << " " << cvv;
+        file.close();
+        cout<<" You have just became the owner of the Mastercard Classic Card"<<endl;
+        cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+        sleep(1);
+        main_menu();
+    }
+}
+
+void create_card()
+{
+    cout<<white;
+    cout<<"What kind of credit card do you wish to submit?"<<endl;
+    cout<<"[1] Mastercard Classic"<<endl;
+    cout<<"[2] Mastercard Gold"<<endl;
+    cout<<"[3] Mastercard Platinum"<<endl;
+    cout<<"[4] Mastercard Elite"<<endl;
+    cout<<"[5] Mastercard WorldClass Elite"<<endl;
+    cout<<endl;
+    cout<<"Enter an option:";
+    cin>>a;
+    switch(a)
+    {
+        case 1 : classic(); break;
+        case 2 : gold(); break;
+        case 3 : platinum(); break;
+        case 4 : elite(); break;
+        case 5 : worldclass(); break;
+        default : cout<<red<<"Enter a valid option."; sleep(1); system("clear"); main_menu();
+
+    }
+}
 
 void change_name()
 {
+    cout<<white;
     ifstream file(IDNP + "data.txt");
     cout<<"Enter new name:";
     cin>>nume;
@@ -76,6 +172,7 @@ void change_name()
 
 void change_password()
 {
+    cout<<white;
     ifstream file(IDNP + "data.txt");
     cout<<"Enter current password:";
     cin>>password1;
@@ -115,6 +212,7 @@ void change_password()
 
 void modify_account()
 {
+    cout<<white;
     cout<<endl;
     cout<<"[1] Change Password"<<endl;
     cout<<"[2] Change Name / Surname"<<endl;
@@ -130,6 +228,7 @@ void modify_account()
 
 void close_account()
 {
+    cout<<white;
     cout<<"Are you sure you want to delete your account?[Y/N]:";
     cin>>rs;
     if(rs=='y' or rs=='Y')
@@ -169,6 +268,7 @@ void close_account()
 void transfer()
 {
     
+    cout<<white;
     ifstream fileIn(IDNP + "balance" + ".txt");
     cout<<"Enter account IDNP:";
     cin>>IDNP2;
@@ -223,6 +323,7 @@ void transfer()
 }
 void withdraw()
 {
+    cout<<white;
     int b,balance;
     ifstream fileIn(IDNP + "balance" + ".txt");
     cout<<"Enter amount:";
@@ -255,6 +356,7 @@ void logout()
 }
 void deposit()
 {
+    cout<<white;
     int b,balance=0;
     ifstream fileIn(IDNP + "balance" + ".txt");
     cout<<"Enter amount:";
@@ -271,6 +373,7 @@ void deposit()
 }
 void main_menu()
 {
+    cout<<white;
     int a;
     ifstream file(IDNP + "balance" + ".txt");
     file>>balance;
@@ -278,17 +381,16 @@ void main_menu()
     cout<<endl;
     sleep(1);
     system("clear");
-    /*cout<<R"(   
-   __  ___     _          __  ___             
-  /  |/  /__ _(_)__      /  |/  /__ ___  __ __
- / /|_/ / _ `/ / _ \    / /|_/ / -_) _ \/ // /
-/_/  /_/\_,_/_/_//_/   /_/  /_/\__/_//_/\_,_/ )"<<endl;*/
+    cout<<"   __  ___     _          __  ___             "<<endl;     
+    cout<<"  /  |/  /__ _(_)__      /  |/  /__ ___  __ __"<<endl;
+    cout<<" / /|_/ / _ `/ / _ \    / /|_/ / -_) _ \/ // /"<<endl;
+    cout<<"/_/  /_/\_,_/_/_//_/   /_/  /_/\__/_//_/\_,_/ "<<endl;
     cout<<endl; 
     cout<<"Welcome Back,"<<nume<<"                        Available Balance "<<balance<<"$";
     cout<<endl;
     cout<<endl;
     cout<<"[1] Deposit Amount                    [6] Modify account"<<endl;
-    cout<<"[2] Withdraw Amount"<<endl;
+    cout<<"[2] Withdraw Amount                   [7] Create Card"<<endl;
     cout<<"[3] Transfer Money"<<endl;
     cout<<"[4] Logout"<<endl;
     cout<<"[5] Close Account"<<endl;
@@ -304,6 +406,7 @@ void main_menu()
         case 4 : logout(); break;
         case 5 : close_account(); break;
         case 6 : modify_account(); break;
+        case 7 : create_card(); break;
         case 99 : break;
         default : cout<<red<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
     }             
@@ -339,6 +442,7 @@ switch(answer)
 
 bool autentificare()
 {
+    cout<<white;
     cout<<"       Enter Name:";
     cin>>nume;
     cout<<"       Enter Surname:";
@@ -371,6 +475,7 @@ bool autentificare()
 
 void inregistrarile_noi()
 {
+    cout<<white;
     string nume,prenume,password;
     string IDNP;
     cout<<endl;
@@ -426,13 +531,14 @@ void inregistrarile_noi()
 }
 int main() 
 {
-    int optiune;
-    /*cout<<R"(    
-      _   __      __  _                   __   __                __      __  ___      __    __                    
-     / | / /___ _/ /_(_)___  ____  ____ _/ /  / /_  ____ _____  / /__   /  |/  /___  / /___/ /___ _   ______ _    
-    /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / __ \/ __ `/ __ \/ //_/  / /|_/ / __ \/ / __  / __ \ | / / __ `/    
-   / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / /_/ / /_/ / / / / ,<    / /  / / /_/ / / /_/ / /_/ / |/ / /_/ /     
-  /_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_.___/\__,_/_/ /_/_/|_|  /_/  /_/\____/_/\__,_/\____/|___/\__,_/      )"<<endl;*/
+    system("clear");
+    cout<<white;
+    int optiune;   
+    cout<<"    _   __      __  _                   __   __                __      __  ___      __    __                     "<<endl;
+    cout<<"   / | / /___ _/ /_(_)___  ____  ____ _/ /  / /_  ____ _____  / /__   /  |/  /___  / /___/ /___ _   ______ _     "<<endl;
+    cout<<"  /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / __ \/ __ `/ __ \/ //_/  / /|_/ / __ \/ / __  / __ \ | / / __ `/      "<<endl;
+    cout<<" / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / /_/ / /_/ / / / / ,<    / /  / / /_/ / / /_/ / /_/ / |/ / /_/ /      "<<endl;
+    cout<<"/_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_.___/\__,_/_/ /_/_/|_|  /_/  /_/\____/_/\__,_/\____/|___/\__,_/     "<<endl;
     cout<<endl;
     cout<<"       Welcome to National Bank of Moldova                                Made with love by guess <3 "<<endl;
     cout<<endl;
