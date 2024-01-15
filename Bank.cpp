@@ -31,7 +31,7 @@ string generateCreditCardNumber(string prefix, int length)
 #define cyan    "\x1B[36m"
 #define white   "\x1B[37m"
 
-string IDNP,password,nume,prenume,IDNP2,password1,password2;
+string IDNP,password,nume,prenume,IDNP2,password1,password2,type;
 string id,pw,nm,pn;
 int a;
 int balance,b,balance2,amount;
@@ -60,22 +60,118 @@ void worldclass();
 
 void worldclass()
 {
-
+    string cardnumber = generateCreditCardNumber("5188" , 16);
+    string cvv = generateCreditCardNumber("1" , 3);
+    cout<<"Advantages of the Mastercard WorldClass Card"<<endl;
+    cout<<"Fees - 15$ per month"<<endl;
+    cout<<"Comfortable - Free P2P Transfers"<<endl;
+    cout<<"Maximum daily transfer - No Daily Limit"<<endl;
+    cout<<"Price - 70$"<<endl;
+    cout<<"Fast - payment takes 6 seconds to process"<<endl;
+    cout<<endl;
+    cout<<"Are you sure you want to submit this card?[Y/N]:";
+    cin>>rs;
+    if(rs == 'Y' or rs=='y')
+    {
+        cout<<"Card Number:"<<cardnumber;
+        cout<<"CVV:"<<cvv<<endl;
+        cout<<"Expiration Date:12/28"<<endl;
+        cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+        ofstream file(IDNP + cvv + "card.txt");
+        file << cardnumber << " " << cvv << " " << "WorldClass";
+        file.close();
+        cout<<" You have just became the owner of the Mastercard Worldclass Card"<<endl;
+        cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+        sleep(5);
+        main_menu();
+    }
 }
 
 void elite()
 {
-
+    string cardnumber = generateCreditCardNumber("5188" , 16);
+    string cvv = generateCreditCardNumber("1" , 3);
+    cout<<"Advantages of the Mastercard Elite Card"<<endl;
+    cout<<"Fees - 7$ per month"<<endl;
+    cout<<"Comfortable - Free P2P Transfers"<<endl;
+    cout<<"Maximum daily transfer - 5000$"<<endl;
+    cout<<"Price - 50$ "<<endl;
+    cout<<"Fast - payment takes 6 seconds to process"<<endl;
+    cout<<endl;
+    cout<<"Are you sure you want to submit this card?[Y/N]:";
+    cin>>rs;
+    if(rs == 'Y' or rs=='y')
+    {
+        cout<<"Card Number:"<<cardnumber;
+        cout<<"CVV:"<<cvv<<endl;
+        cout<<"Expiration Date:12/28"<<endl;
+        cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+        ofstream file(IDNP + cvv + "card.txt");
+        file << cardnumber << " " << cvv << " " << "Elite";
+        file.close();
+        cout<<" You have just became the owner of the Mastercard Elite Card"<<endl;
+        cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+        sleep(5);
+        main_menu();
+    }
 }
 
 void platinum()
 {
-
+    string cardnumber = generateCreditCardNumber("5188" , 16);
+    string cvv = generateCreditCardNumber("1" , 3);
+    cout<<"Advantages of the Mastercard Platinum Card"<<endl;
+    cout<<"Fees - 5$ per month"<<endl;
+    cout<<"Comfortable - Free P2P Transfers"<<endl;
+    cout<<"Maximum daily transfer - 2500$"<<endl;
+    cout<<"Price - 30$ upfront cost"<<endl;
+    cout<<"Fast - payment takes 6 seconds to process"<<endl;
+    cout<<endl;
+    cout<<"Are you sure you want to submit this card?[Y/N]:";
+    cin>>rs;
+    if(rs == 'Y' or rs=='y')
+    {
+        cout<<"Card Number:"<<cardnumber;
+        cout<<"CVV:"<<cvv<<endl;
+        cout<<"Expiration Date:12/28"<<endl;
+        cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+        ofstream file(IDNP + cvv + "card.txt");
+        file << cardnumber << " " << cvv << " " << "Platinum";
+        file.close();
+        cout<<" You have just became the owner of the Mastercard Platinum Card"<<endl;
+        cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+        sleep(5);
+        main_menu();
+    }
 }
 
 void gold()
 {
-
+    string cardnumber = generateCreditCardNumber("5188" , 16);
+    string cvv = generateCreditCardNumber("1" , 3);
+    cout<<"Advantages of the Mastercard Gold Card"<<endl;
+    cout<<"Fees - 2$ per month"<<endl;
+    cout<<"Comfortable - Free P2P Transfers"<<endl;
+    cout<<"Maximum daily transfer - 1500$"<<endl;
+    cout<<"Price - 15$"<<endl;
+    cout<<"Fast - payment takes 6 seconds to process"<<endl;
+    cout<<endl;
+    cout<<"Are you sure you want to submit this card?[Y/N]:";
+    cin>>rs;
+    if(rs == 'Y' or rs=='y')
+    {
+        cout<<"Card Number:"<<cardnumber;
+        cout<<"CVV:"<<cvv<<endl;
+        cout<<"Expiration Date:12/28"<<endl;
+        cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+        ofstream file(IDNP + cvv + "card.txt");
+        file << cardnumber << " " << cvv << " " << "Gold";
+        file.close();
+        cout<<" You have just became the owner of the Mastercard Gold Card"<<endl;
+        cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+        sleep(5);
+        main_menu();
+    }
 }
 
 void classic()
@@ -86,7 +182,7 @@ void classic()
     cout<<"Advantages of the Mastercard Classic Card"<<endl;
     cout<<"Fees - No annual fees"<<endl;
     cout<<"Comfortable - Free P2P Transfers"<<endl;
-    cout<<"Maximum daily transfer - 1000$"<<endl;
+    cout<<"Maximum daily transfer - 700$"<<endl;
     cout<<"Price - No cost to create"<<endl;
     cout<<"Fast - payment takes 6 seconds to process"<<endl;
     cout<<endl;
@@ -95,15 +191,15 @@ void classic()
     if(rs == 'Y' or rs=='y')
     {
         cout<<"Card Number:"<<cardnumber;
-        cout<<"CVV:"<<endl;
+        cout<<"CVV:"<<cvv<<endl;
         cout<<"Expiration Date:12/28"<<endl;
         cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
         ofstream file(IDNP + cvv + "card.txt");
-        file << cardnumber << " " << cvv;
+        file << cardnumber << " " << cvv << " " << "Classic";
         file.close();
         cout<<" You have just became the owner of the Mastercard Classic Card"<<endl;
         cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-        sleep(1);
+        sleep(5);
         main_menu();
     }
 }
@@ -117,6 +213,7 @@ void create_card()
     cout<<"[3] Mastercard Platinum"<<endl;
     cout<<"[4] Mastercard Elite"<<endl;
     cout<<"[5] Mastercard WorldClass Elite"<<endl;
+    cout<<"[99] Return to Menu "<<endl;
     cout<<endl;
     cout<<"Enter an option:";
     cin>>a;
@@ -127,6 +224,7 @@ void create_card()
         case 3 : platinum(); break;
         case 4 : elite(); break;
         case 5 : worldclass(); break;
+        case 99 : system("clear"); main_menu(); break;
         default : cout<<red<<"Enter a valid option."; sleep(1); system("clear"); main_menu();
 
     }
@@ -493,7 +591,7 @@ void inregistrarile_noi()
         system("clear");
         inregistrarile_noi();
     }
-    cout<<"IDNP:";
+    cout<<"       IDNP:";
     cin>>IDNP;
     if(IDNP.length() != 13)
     {
