@@ -300,14 +300,14 @@ void create_card()
     fileOut.close();
     cout<<white;
     cout<<"What kind of credit card do you wish to submit?"<<endl;
-    cout<<green<<"[1] Mastercard Classic"<<endl;
+    cout<<white<<"[1] Mastercard Classic"<<endl;
     if(balance < 15)
     {
         cout<<red<<"[2] Mastercard Gold"<<gold_av<<endl;
     }
     else
     {   
-        cout<<green<<"[2] Mastercard Gold"<<gold_av<<endl;
+        cout<<white<<"[2] Mastercard Gold"<<gold_av<<endl;
     }
     if(balance < 30)
     {
@@ -315,7 +315,7 @@ void create_card()
     }
     else
     {
-        cout<<green<<"[3] Mastercard Platinum"<<endl;
+        cout<<white<<"[3] Mastercard Platinum"<<endl;
     }
     if(balance < 50)
     {
@@ -323,15 +323,15 @@ void create_card()
     }
     else
     {
-        cout<<green<<"[4] Mastercard Elite"<<elite_av<<endl;
+        cout<<white<<"[4] Mastercard Elite"<<elite_av<<endl;
     }
     if(balance < 70)
     {
-        cout<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
+        cout<<red<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
     }
     else
     {
-        cout<<magenta<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
+        cout<<white<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
     }    
     cout<<white;
     cout<<"[99] Return to Menu "<<endl;
@@ -435,6 +435,7 @@ void modify_account()
     cout<<endl;
     cout<<"[1] Change Password"<<endl;
     cout<<"[2] Change Name / Surname"<<endl;
+    cout<<endl;
     cout<<"Choose option";
     cin>>a;
     switch(a)
@@ -447,7 +448,7 @@ void modify_account()
 
 void close_account()
 {
-    cout<<white;
+    cout<<white<<endl;
     cout<<"Are you sure you want to delete your account?[Y/N]:";
     cin>>rs;
     if(rs=='y' or rs=='Y')
@@ -615,7 +616,7 @@ void main_menu()
     cout<<"[5] Close Account"<<endl;
     cout<<endl;
     cout<<"[99] Exit"<<endl;
-    cout<<"Enter an option:";
+    cout<<endl<<"Enter an option:";
     cin>>a;
     switch(a)
     {
@@ -772,7 +773,7 @@ int main()
     {
         case 1 : autentificare(); break;
         case 2 : inregistrarile_noi(); break;
-        case 3 :  break;
+        case 3 :  cout<<yellow<<"       Coming Soon..."<<endl; sleep(1); system("clear"); main(); break;
         case 99 : exit(0); break;
         default : sleep(1); cout<<red; system("clear"); main();
     }
