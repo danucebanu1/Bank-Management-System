@@ -293,33 +293,47 @@ void classic()
 
 void create_card()
 {
+    cout<<endl;
     string gold_av,platinum_av,elite_av,worldclass_av;
     ofstream fileOut(IDNP + "balance" + ".txt");
     fileOut<<balance;
     fileOut.close();
-    if(balance < 15)
-    {
-        gold_av == " -Not Available";
-    }
-    else if(balance < 30)
-    {
-        platinum_av == " -Not Available";
-    }
-    else if(balance < 50)
-    {
-        elite_av == " -Not Available";
-    }
-    else if(balance < 70)
-    {
-        worldclass_av == " -Not Available";
-    }
     cout<<white;
     cout<<"What kind of credit card do you wish to submit?"<<endl;
-    cout<<"[1] Mastercard Classic"<<endl;
-    cout<<"[2] Mastercard Gold"<<gold_av<<endl;
-    cout<<"[3] Mastercard Platinum"<<platinum_av<<endl;
-    cout<<"[4] Mastercard Elite"<<elite_av<<endl;
-    cout<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
+    cout<<green<<"[1] Mastercard Classic"<<endl;
+    if(balance < 15)
+    {
+        cout<<red<<"[2] Mastercard Gold"<<gold_av<<endl;
+    }
+    else
+    {   
+        cout<<green<<"[2] Mastercard Gold"<<gold_av<<endl;
+    }
+    if(balance < 30)
+    {
+        cout<<red<<"[3] Mastercard Platinum"<<platinum_av<<endl;
+    }
+    else
+    {
+        cout<<green<<"[3] Mastercard Platinum"<<endl;
+    }
+    if(balance < 50)
+    {
+        cout<<red<<"[4] Mastercard Elite"<<elite_av<<endl;
+    }
+    else
+    {
+        cout<<green<<"[4] Mastercard Elite"<<elite_av<<endl;
+    }
+    if(balance < 70)
+    {
+        cout<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
+    }
+    else
+    {
+        cout<<magenta<<"[5] Mastercard WorldClass Elite"<<worldclass_av<<endl;
+    }    
+    cout<<white;
     cout<<"[99] Return to Menu "<<endl;
     cout<<endl;
     cout<<"Enter an option:";
@@ -332,7 +346,7 @@ void create_card()
         case 4 : elite(); break;
         case 5 : worldclass(); break;
         case 99 : system("clear"); main_menu(); break;
-        default : cout<<red<<"Enter a valid option."; sleep(1); system("clear"); main_menu();
+        default : cout<<red<<"Enter a valid option."; sleep(1); system("clear"); create_card();
 
     }
 }
