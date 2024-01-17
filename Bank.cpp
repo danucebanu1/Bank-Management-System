@@ -80,7 +80,10 @@ void worldclass()
         cout<<"Comfortable - Free P2P Transfers"<<endl;
         cout<<"Maximum daily transfer - No Daily Limit"<<endl;
         cout<<"Price - 70$"<<endl;
+        cout<<"Cashback - 7% for every purchase you make"<<endl;
         cout<<"Fast - payment takes 6 seconds to process"<<endl;
+        cout<<"Loyalty - you get to stay in a first class lounge in every airport with the WorldClass Elite card"<<endl;
+        cout<<"Sales - get 25% sale in every grocery store and our parteners stores"<<endl;
         cout<<endl;
         cout<<"Are you sure you want to submit this card?[Y/N]:";
         cin>>rs;
@@ -90,7 +93,7 @@ void worldclass()
             ofstream fileOut(IDNP + "balance" + ".txt");
             fileOut<<balance;
             fileOut.close();
-            cout<<"Card Number:"<<cardnumber<<endl;
+            cout<<endl<<"Card Number:"<<cardnumber<<endl;
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
@@ -127,7 +130,10 @@ void elite()
         cout<<"Comfortable - Free P2P Transfers"<<endl;
         cout<<"Maximum daily transfer - 5000$"<<endl;
         cout<<"Price - 50$ "<<endl;
+        cout<<"Cashback - 3% for every purchase you make"<<endl;
         cout<<"Fast - payment takes 6 seconds to process"<<endl;
+        cout<<"Loyalty - you get to stay in a business lounge in every airport with the Elite card"<<endl;
+        cout<<"Sales - get 20% sale in every grocery store and our parteners stores"<<endl;
         cout<<endl;
         cout<<"Are you sure you want to submit this card?[Y/N]:";
         cin>>rs;
@@ -137,7 +143,7 @@ void elite()
             ofstream fileOut(IDNP + "balance" + ".txt");
             fileOut<<balance;
             fileOut.close();
-            cout<<"Card Number:"<<cardnumber<<endl;
+            cout<<endl<<"Card Number:"<<cardnumber<<endl;
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
@@ -174,7 +180,9 @@ void platinum()
         cout<<"Comfortable - Free P2P Transfers"<<endl;
         cout<<"Maximum daily transfer - 2500$"<<endl;
         cout<<"Price - 30$ upfront cost"<<endl;
+        cout<<"Cashback - 1% for every purchase you make"<<endl;
         cout<<"Fast - payment takes 6 seconds to process"<<endl;
+        cout<<"Sales - get 10% sale in every grocery store and our parteners stores"<<endl;
         cout<<endl;
         cout<<"Are you sure you want to submit this card?[Y/N]:";
         cin>>rs;
@@ -184,7 +192,7 @@ void platinum()
             ofstream fileOut(IDNP + "balance" + ".txt");
             fileOut<<balance;
             fileOut.close();
-            cout<<"Card Number:"<<cardnumber<<endl;
+            cout<<endl<<"Card Number:"<<cardnumber<<endl;
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
@@ -227,6 +235,7 @@ void gold()
         cout<<"Maximum daily transfer - 1500$"<<endl;
         cout<<"Price - 15$"<<endl;
         cout<<"Fast - payment takes 6 seconds to process"<<endl;
+        cout<<"Sales - get 5% sale in every grocery store and our parteners stores"<<endl;
         cout<<endl;
         cout<<"Are you sure you want to submit this card?[Y/N]:";
         cin>>rs;
@@ -236,7 +245,7 @@ void gold()
             ofstream fileOut(IDNP + "balance" + ".txt");
             fileOut<<balance;
             fileOut.close();
-            cout<<"Card Number:"<<cardnumber;
+            cout<<endl<<"Card Number:"<<cardnumber<<endl;
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
@@ -272,7 +281,7 @@ void classic()
     cin>>rs;
     if(rs == 'Y' or rs=='y')
     {
-        cout<<"Card Number:"<<cardnumber;
+        cout<<endl<<"Card Number:"<<cardnumber<<endl;
         cout<<"CVV:"<<cvv<<endl;
         cout<<"Expiration Date:12/28"<<endl;
         cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
@@ -627,7 +636,7 @@ void main_menu()
         case 5 : close_account(); break;
         case 6 : modify_account(); break;
         case 7 : create_card(); break;
-        case 99 : break;
+        case 99 : system("clear"); break;
         default : cout<<red<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
     }             
 }
@@ -774,7 +783,7 @@ int main()
         case 1 : autentificare(); break;
         case 2 : inregistrarile_noi(); break;
         case 3 :  cout<<yellow<<"       Coming Soon..."<<endl; sleep(1); system("clear"); main(); break;
-        case 99 : exit(0); break;
+        case 99 : system("clear"); break;
         default : sleep(1); cout<<red; system("clear"); main();
     }
 }
