@@ -97,7 +97,34 @@ void worldclass()
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
-            ofstream file(IDNP + cvv + "card.txt");
+            fstream fin(IDNP + "card.txt");
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
+            ofstream file;
             file << cardnumber << " " << cvv << " " << "WorldClass";
             file.close();
             cout<<"You have just became the owner of the Mastercard Worldclass Card"<<endl;
@@ -147,7 +174,34 @@ void elite()
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
-            ofstream file(IDNP + cvv + "card.txt");
+            fstream fin(IDNP + "card.txt");
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
+            ofstream file;
             file << cardnumber << " " << cvv << " " << "Elite";
             file.close();
             cout<<"You have just became the owner of the Mastercard Elite Card"<<endl;
@@ -188,21 +242,48 @@ void platinum()
         cin>>rs;
         if(rs == 'Y' or rs=='y')
         {
-            balance -= 30;
-            ofstream fileOut(IDNP + "balance" + ".txt");
-            fileOut<<balance;
-            fileOut.close();
-            cout<<endl<<"Card Number:"<<cardnumber<<endl;
-            cout<<"CVV:"<<cvv<<endl;
-            cout<<"Expiration Date:12/28"<<endl;
-            cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
-            ofstream file(IDNP + cvv + "card.txt");
-            file << cardnumber << " " << cvv << " " << "Platinum";
-            file.close();
-            cout<<"You have just became the owner of the Mastercard Platinum Card"<<endl;
-            cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-            sleep(5);
-            main_menu();
+                balance -= 30;
+                ofstream fileOut(IDNP + "balance" + ".txt");
+                fileOut<<balance;
+                fileOut.close();
+                cout<<endl<<"Card Number:"<<cardnumber<<endl;
+                cout<<"CVV:"<<cvv<<endl;
+                cout<<"Expiration Date:12/28"<<endl;
+                cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
+                fstream fin(IDNP + "card.txt");
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
+            ofstream file;
+                file << cardnumber << " " << cvv << " " << "Platinum"<<" "<<"12/28";
+                file.close();
+                cout<<"You have just became the owner of the Mastercard Platinum Card"<<endl;
+                cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
+                sleep(5);
+                main_menu();
         }
         else if(rs == 'n' or rs == 'N')
         {
@@ -249,7 +330,34 @@ void gold()
             cout<<"CVV:"<<cvv<<endl;
             cout<<"Expiration Date:12/28"<<endl;
             cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
-            ofstream file(IDNP + cvv + "card.txt");
+            fstream fin(IDNP + "card.txt");
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
+            ofstream file;
             file << cardnumber << " " << cvv << " " << "Gold";
             file.close();
             cout<<"You have just became the owner of the Mastercard Gold Card"<<endl;
@@ -285,7 +393,34 @@ void classic()
         cout<<"CVV:"<<cvv<<endl;
         cout<<"Expiration Date:12/28"<<endl;
         cout<<"Cardholder Name:"<<nume<<' '<<prenume<<endl;
-        ofstream file(IDNP + cvv + "card.txt");
+        fstream fin(IDNP + "card.txt");
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
+            ofstream file;
         file << cardnumber << " " << cvv << " " << "Classic";
         file.close();
         cout<<"You have just became the owner of the Mastercard Classic Card"<<endl;
