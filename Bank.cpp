@@ -124,6 +124,32 @@ void worldclass()
                     }
                 }
             }
+            if(!fin.is_open())
+            ofstream file(IDNP  + "card.txt");
+            else
+            {
+                ifstream fias(IDNP + "card2.txt");
+                if(!fias.is_open())
+                ofstream file(IDNP + "card2.txt");
+                else
+                {
+                    ifstream fial(IDNP + "card3.txt");
+                    if (!fial.is_open())
+                    ofstream file(IDNP + "card3.txt");
+                    else
+                    {
+                        ifstream fial(IDNP + "card4.txt");
+                        if(!fial.is_open())
+                        ofstream  file(IDNP + "card4.txt");
+                        else
+                        {
+                            ifstream fial(IDNP + "card5.txt");
+                            if(!fial.is_open())
+                            ofstream file(IDNP +  "card5.txt");
+                        }
+                    }
+                }
+            }
             ofstream file;
             file << cardnumber << " " << cvv << " " << "WorldClass";
             file.close();
@@ -737,6 +763,7 @@ void deposit()
 }
 void main_menu()
 {
+    string cd , cv , type ; 
     cout<<white;
     int a;
     ifstream file(IDNP + "balance" + ".txt");
@@ -760,6 +787,19 @@ void main_menu()
     cout<<"[5] Close Account"<<endl;
     cout<<endl;
     cout<<"[99] Exit"<<endl;
+    cout<<endl;
+    fstream ile(IDNP + "card.txt");
+    if(ile.is_open())
+    {
+        ile >> cd >> cv >> type;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       |"<<endl;
+        cout<<"|  Your card details are:               |"<<endl;
+        cout<<"|  Card Number : "<<cd<<"             |"<<endl;
+        cout<<"|  CVV : "<<cv<<"               |"<<endl;
+        cout<<"|  Type : "<<type<<"              |"<<endl;
+        cout<<"|_______________________________________|"<<endl;
+    }
     cout<<endl<<"Enter an option:";
     cin>>a;
     switch(a)
