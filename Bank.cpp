@@ -683,28 +683,37 @@ void change_password()
     }
     else
     {
-        cout<<"Enter new password:";
+        cout<<"Enter new password (Min. 6 characters):";
         cin>>password1;
         cout<<"Re-enter new password:";
         cin>>password2;
-        if(password1 == password2)
+        if(password2.length() < 6)
         {
-            ofstream fout(IDNP + "data.txt");
-            fout<<IDNP<<" "<<password1<<" "<<nume<<" "<<prenume;
-            fout.close();
-            cout<<green<<"Password changed successfully!"<<endl;
+            cout<<yellow<<"Password lenght should be at least 6 characters long,try again"<<endl;
             sleep(1);
-            system("clear");
-            main();
+            modify_account();
         }
         else
         {
-            cout<<red<<"Passwords do not match, try again."<<endl;
-            sleep(1);
-            system("clear");
-            change_password();
+            if(password1 == password2)
+            {
+                ofstream fout(IDNP + "data.txt");
+                fout<<IDNP<<" "<<password1<<" "<<nume<<" "<<prenume;
+                fout.close();
+                cout<<green<<"Password changed successfully!"<<endl;
+                sleep(1);
+                system("clear");
+                main();
+            }
+            else
+            {
+                cout<<red<<"Passwords do not match, try again."<<endl;
+                sleep(1);
+                system("clear");
+                change_password();
+            }
         }
-    }
+    }   
 
 }
 
@@ -714,13 +723,15 @@ void modify_account()
     cout<<endl;
     cout<<"[1] Change Password"<<endl;
     cout<<"[2] Change Name / Surname"<<endl;
+    cout<<"[99] Go Back to Main Menu"<<endl;
     cout<<endl;
-    cout<<"Choose option";
+    cout<<"Choose option:";
     cin>>a;
     switch(a)
     {
         case 1 : change_password(); break;
         case 2 : change_name(); break;
+        case 99 : main_menu(); break;
         default : sleep(1); cout<<red; modify_account();
     }
 }
@@ -911,7 +922,7 @@ void main_menu()
         cout<<"|  Your card details are:               |"<<endl;
         cout<<"|  Card Number : "<<cd<<"       |"<<endl;
         cout<<"|  CVV : "<<cv<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                           |" << endl;
+        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
         cout<<"|  Type : "<<type<<"                      |"<<endl;
         cout<<"|_______________________________________|"<<endl;
     }
@@ -924,7 +935,7 @@ void main_menu()
         cout<<"|  Your card details are:               |"<<endl;
         cout<<"|  Card Number : "<<cd1<<"       |"<<endl;
         cout<<"|  CVV : "<<cv1<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                           |" << endl;
+        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
         cout<<"|  Type : "<<type1<<"                      |"<<endl;
         cout<<"|_______________________________________|"<<endl;
 
@@ -938,7 +949,7 @@ void main_menu()
         cout<<"|  Your card details are:               |"<<endl;
         cout<<"|  Card Number : "<<cdd<<"       |"<<endl;
         cout<<"|  CVV : "<<cvc<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                           |" << endl;
+        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
         cout<<"|  Type : "<<typ<<"                      |"<<endl;
         cout<<"|_______________________________________|"<<endl;
 
@@ -952,7 +963,7 @@ void main_menu()
         cout<<"|  Your card details are:               |"<<endl;
         cout<<"|  Card Number : "<<cdc<<"       |"<<endl;
         cout<<"|  CVV : "<<cvd<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                           |" << endl;
+        cout<<"|  Expiration Date : "<<date<<"               |" << endl;
         cout<<"|  Type : "<<tipe<<"                      |"<<endl;
         cout<<"|_______________________________________|"<<endl;
 
@@ -966,7 +977,7 @@ void main_menu()
         cout<<"|  Your card details are:               |"<<endl;
         cout<<"|  Card Number : "<<cdv<<"       |"<<endl;
         cout<<"|  CVV : "<<cvdc<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                           |" << endl;
+        cout<<"|  Expiration Date : "<<date<<"                |" << endl;
         cout<<"|  Type : "<<tip<<"                      |"<<endl;
         cout<<"|_______________________________________|"<<endl;
     }
