@@ -58,6 +58,294 @@ void gold();
 void platinum();
 void elite();
 void worldclass();
+void card_related();
+void show_card();
+void delete_card();
+
+void delete_card()
+{
+    cout<<white;
+    fstream ile(IDNP + "card.txt");
+    fstream dat(IDNP + "card2 .txt");
+    fstream  dat2(IDNP + "card3.txt");
+    fstream  dat3(IDNP + "card4.txt");
+    fstream dat4(IDNP + "card5.txt");
+    string cn , pn , taip , taip1 , taip2 , taip3 , taip4;
+    int cnc;
+    if (ile.is_open())
+    {
+        ile >> cn >> pn >> taip;
+        cout<<"[1] "<<taip;
+    }
+    if (dat.is_open())
+    {
+        dat >> cn >> pn >> taip1;
+        cout<<"[2] "<<taip1<<endl;;
+    }
+    if (dat2.is_open())
+    {
+        dat2 >> cn >> pn >> taip2;
+        cout<<"[3] "<<taip2<<endl;
+    }
+    if (dat3.is_open())
+    {
+        dat3 >> cn >> pn >> taip3;
+        cout<<"[4] "<<taip3<<endl;
+    }
+    if (dat4.is_open())
+    {
+        dat4 >> cn >> pn >> taip4;
+        cout<<"[5] "<<taip4<<endl;
+    }
+    if(!ile.is_open() and !dat.is_open() and !dat2.is_open() and !dat3.is_open() and !dat4.is_open())
+    {
+        cout<<yellow<<"You have no cards,redirecting. . ."<<endl;
+        sleep(1);
+        system("clear");
+        card_related();
+    }
+    cout << "\nChoose the type of card you want to delete: ";
+    cin>>cnc;
+    char zx;
+    if (ile.is_open() and cnc == 1 )
+    {
+        cout<<"Are you sure you want to delete your MasterCard "<<taip<<" card? [Y/N] :";
+        cin>>zx;
+        if(zx == 'y' or 'Y')
+        {
+            cout<<"Enter password to confirm:";
+            cin>>password1;
+            if(password1==password)
+            {
+                remove((IDNP + "card.txt").c_str());
+                cout<<green<<"You have succesfully deleted your Mastercard "<<taip<<" card."<<endl;
+                sleep(1);
+                system("clear");
+                main_menu();
+            }
+            else 
+            {
+                cout<<red<<"Incorrect Password,try again."<<endl;
+                sleep(1);
+                system("clear");
+                delete_card();
+            }
+        }
+    }
+    else  if (dat.is_open() and cnc == 2)
+    {
+       cout<<"Are you sure you want to delete your MasterCard "<<taip1<<" card? [Y/N] :";
+        cin>>zx;
+        if(zx == 'y' or 'Y')
+        {
+            cout<<"Enter password to confirm:";
+            cin>>password1;
+            if(password1==password)
+            {
+                remove((IDNP + "card2.txt").c_str());
+                cout<<green<<"You have succesfully deleted your Mastercard "<<taip1<<" card."<<endl;
+                sleep(1);
+                system("clear");
+                main_menu();
+            }
+            else 
+            {
+                cout<<red<<"Incorrect Password,try again."<<endl;
+                sleep(1);
+                system("clear");
+                delete_card();
+            }
+        } 
+    }
+    else if (dat2.is_open() and cnc == 3)
+    {
+        cout<<"Are you sure you want to delete your MasterCard "<<taip2<<" card? [Y/N] :";
+        cin>>zx;
+        if(zx == 'y' or 'Y')
+        {
+            cout<<"Enter password to confirm:";
+            cin>>password1;
+            if(password1==password)
+            {
+                remove((IDNP + "card3.txt").c_str());
+                cout<<green<<"You have succesfully deleted your Mastercard "<<taip2<<" card."<<endl;
+                sleep(1);
+                system("clear");
+                main_menu();
+            }
+            else 
+            {
+                cout<<red<<"Incorrect Password,try again."<<endl;
+                sleep(1);
+                system("clear");
+                delete_card();
+            }
+        }
+    }
+    else if(dat3.is_open() and cnc == 4)
+    {
+        cout<<"Are you sure you want to delete your MasterCard "<<taip3<<" card? [Y/N] :";
+        cin>>zx;
+        if(zx == 'y' or 'Y')
+        {
+            cout<<"Enter password to confirm:";
+            cin>>password1;
+            if(password1==password)
+            {
+                remove((IDNP + "card4.txt").c_str());
+                cout<<green<<"You have succesfully deleted your Mastercard "<<taip3<<" card."<<endl;
+                sleep(1);
+                system("clear");
+                main_menu();
+            }
+            else 
+            {
+                cout<<red<<"Incorrect Password,try again."<<endl;
+                sleep(1);
+                system("clear");
+                delete_card();
+            }
+        }
+    }
+    else if ( dat4.is_open() and cnc==5 )
+    {
+        cout<<"Are you sure you want to delete your MasterCard "<<taip4<<" card? [Y/N] :";
+        cin>>zx;
+        if(zx == 'y' or 'Y')
+        {
+            cout<<"Enter password to confirm:";
+            cin>>password1;
+            if(password1==password)
+            {
+                remove((IDNP + "card5.txt").c_str());
+                cout<<green<<"You have succesfully deleted your Mastercard "<<taip4<<" card."<<endl;
+                sleep(1);
+                system("clear");
+                main_menu();
+            }
+            else 
+            {
+                cout<<red<<"Incorrect Password,try again."<<endl;
+                sleep(1);
+                system("clear");
+                delete_card();
+            }
+        }
+    }
+}
+
+void show_card()
+{
+    cout<<white;
+    string cd , cv ,date;
+    fstream ile(IDNP + "card.txt");
+    fstream dat(IDNP + "card2 .txt");
+    fstream  dat2(IDNP + "card3.txt");
+    fstream  dat3(IDNP + "card4.txt");
+    fstream dat4(IDNP + "card5.txt");
+    string cd1,cv1,type1;
+    if(ile.is_open())
+    {
+        ile >> cd >> cv >> type >> date;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       "<<endl;
+        cout<<"|  Your card details are:               "<<endl;
+        cout<<"|  Card Number : "<<cd<<"       "<<endl;
+        cout<<"|  CVV : "<<cv<<"                            "<<endl;
+        cout<<"|  Expiration Date : "<<date<<"              " << endl;
+        cout<<"|  Type : "<<type<<"                      "<<endl;
+        cout<<"|_______________________________________"<<endl;
+    }
+    if(dat.is_open())
+    {
+        string cd1 , cv1 , type1;
+        dat >> cd1 >> cv1 >> type1 ;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       "<<endl;
+        cout<<"|  Your card details are:               "<<endl;
+        cout<<"|  Card Number : "<<cd1<<"       "<<endl;
+        cout<<"|  CVV : "<<cv1<<"                            "<<endl;
+        cout<<"|  Expiration Date : "<<date<<"              " << endl;
+        cout<<"|  Type : "<<type1<<"                      "<<endl;
+        cout<<"|_______________________________________"<<endl;
+
+    }
+    if(dat2.is_open())
+    {
+        string cdd,cvc,typ;
+        dat2 >> cdd >> cvc >> typ;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       "<<endl;
+        cout<<"|  Your card details are:               "<<endl;
+        cout<<"|  Card Number : "<<cdd<<"      "<<endl;
+        cout<<"|  CVV : "<<cvc<<"                            "<<endl;
+        cout<<"|  Expiration Date : "<<date<<"             " << endl;
+        cout<<"|  Type : "<<typ<<"                      "<<endl;
+        cout<<"|_______________________________________"<<endl;
+
+    }
+    if(dat3.is_open())
+    {
+        string cdc , cvd , tipe;
+        dat3 >> cdc >> cvd >> tipe;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       "<<endl;
+        cout<<"|  Your card details are:               "<<endl;
+        cout<<"|  Card Number : "<<cdc<<"       "<<endl;
+        cout<<"|  CVV : "<<cvd<<"                            "<<endl;
+        cout<<"|  Expiration Date : "<<date<<"               " << endl;
+        cout<<"|  Type : "<<tipe<<"                      "<<endl;
+        cout<<"|_______________________________________"<<endl;
+
+    }
+    if(dat4.is_open())
+    {
+        string cdv,cvdc,tip;
+        dat4 >> cdv >> cvdc >> tip;
+        cout<<"_________________________________________"<<endl;
+        cout<<"|                                       "<<endl;
+        cout<<"|  Your card details are:               "<<endl;
+        cout<<"|  Card Number : "<<cdv<<"       "<<endl;
+        cout<<"|  CVV : "<<cvdc<<"                            "<<endl;
+        cout<<"|  Expiration Date : "<<date<<"                " << endl;
+        cout<<"|  Type : "<<tip<<"                      "<<endl;
+        cout<<"|_______________________________________"<<endl;
+    }
+    int cp; 
+        if(!ile.is_open() and !dat.is_open() and !dat2.is_open() and !dat3.is_open() and !dat4.is_open())
+    {
+        cout<<yellow<<"You have no cards,redirecting. . ."<<endl;
+        sleep(1);
+        system("clear");
+        card_related();
+    }
+    cout<<endl<<"[1] Return Back to Menu";
+    cin>>cp;
+    switch(cp)
+    {
+        case 1 : system("clear"); card_related(); break;
+        default : cout<<red<<"There is no such option like this."<<endl; sleep(1); system("clear"); show_card();
+    }
+}
+
+void card_related()
+{
+    cout<<white;
+    int c;
+    cout<<endl<<"[1] Show Cards"<<endl;
+    cout<<"[2] New Card"<<endl;
+    cout<<"[3] Delete Card"<<endl;
+    cout<<endl;
+    cout<<"Enter option :";
+    cin>>c;
+    switch(c)
+    {
+        case 1 : show_card(); break;
+        case 2 : create_card(); break;
+        case 3 : delete_card(); break;
+        default: cout<<red<<"Invalid Option! Please Enter Again."; sleep(1); card_related();
+    }
+}
 
 void worldclass()
 {
@@ -901,86 +1189,13 @@ void main_menu()
     cout<<endl;
     cout<<endl;
     cout<<"[1] Deposit Amount                    [6] Modify account"<<endl;
-    cout<<"[2] Withdraw Amount                   [7] Create Card"<<endl;
-    cout<<"[3] Transfer Money"<<endl;
+    cout<<"[2] Withdraw Amount                   [7] Card Related Options"<<endl;
+    cout<<"[3] Transfer Money                    "<<endl;
     cout<<"[4] Logout"<<endl;
     cout<<"[5] Close Account"<<endl;
     cout<<endl;
     cout<<"[99] Exit"<<endl;
     cout<<endl;
-    fstream ile(IDNP + "card.txt");
-    fstream dat(IDNP + "card2 .txt");
-    fstream  dat2(IDNP + "card3.txt");
-    fstream  dat3(IDNP + "card4.txt");
-    fstream dat4(IDNP + "card5.txt");
-    string cd1,cv1,type1;
-    if(ile.is_open())
-    {
-        ile >> cd >> cv >> type >> date;
-        cout<<"_________________________________________"<<endl;
-        cout<<"|                                       |"<<endl;
-        cout<<"|  Your card details are:               |"<<endl;
-        cout<<"|  Card Number : "<<cd<<"       |"<<endl;
-        cout<<"|  CVV : "<<cv<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
-        cout<<"|  Type : "<<type<<"                      |"<<endl;
-        cout<<"|_______________________________________|"<<endl;
-    }
-    if(dat.is_open())
-    {
-        string cd1 , cv1 , type1;
-        dat >> cd1 >> cv1 >> type1 ;
-        cout<<"_________________________________________"<<endl;
-        cout<<"|                                       |"<<endl;
-        cout<<"|  Your card details are:               |"<<endl;
-        cout<<"|  Card Number : "<<cd1<<"       |"<<endl;
-        cout<<"|  CVV : "<<cv1<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
-        cout<<"|  Type : "<<type1<<"                      |"<<endl;
-        cout<<"|_______________________________________|"<<endl;
-
-    }
-    if(dat2.is_open())
-    {
-        string cdd,cvc,typ;
-        dat2 >> cdd >> cvc >> typ;
-        cout<<"_________________________________________"<<endl;
-        cout<<"|                                       |"<<endl;
-        cout<<"|  Your card details are:               |"<<endl;
-        cout<<"|  Card Number : "<<cdd<<"       |"<<endl;
-        cout<<"|  CVV : "<<cvc<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"              |" << endl;
-        cout<<"|  Type : "<<typ<<"                      |"<<endl;
-        cout<<"|_______________________________________|"<<endl;
-
-    }
-    if(dat3.is_open())
-    {
-        string cdc , cvd , tipe;
-        dat3 >> cdc >> cvd >> tipe;
-        cout<<"_________________________________________"<<endl;
-        cout<<"|                                       |"<<endl;
-        cout<<"|  Your card details are:               |"<<endl;
-        cout<<"|  Card Number : "<<cdc<<"       |"<<endl;
-        cout<<"|  CVV : "<<cvd<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"               |" << endl;
-        cout<<"|  Type : "<<tipe<<"                      |"<<endl;
-        cout<<"|_______________________________________|"<<endl;
-
-    }
-    if(dat4.is_open())
-    {
-        string cdv,cvdc,tip;
-        dat4 >> cdv >> cvdc >> tip;
-        cout<<"_________________________________________"<<endl;
-        cout<<"|                                       |"<<endl;
-        cout<<"|  Your card details are:               |"<<endl;
-        cout<<"|  Card Number : "<<cdv<<"       |"<<endl;
-        cout<<"|  CVV : "<<cvdc<<"                            |"<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                |" << endl;
-        cout<<"|  Type : "<<tip<<"                      |"<<endl;
-        cout<<"|_______________________________________|"<<endl;
-    }
     cout<<endl<<"Enter an option:";
     cin>>a;
     switch(a)
@@ -991,7 +1206,7 @@ void main_menu()
         case 4 : logout(); break;
         case 5 : close_account(); break;
         case 6 : modify_account(); break;
-        case 7 : create_card(); break;
+        case 7 : card_related(); break;
         case 99 : system("clear"); break;
         default : cout<<red<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
     }             
