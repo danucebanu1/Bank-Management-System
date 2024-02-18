@@ -335,6 +335,7 @@ void card_related()
     cout<<endl<<"[1] Show Cards"<<endl;
     cout<<"[2] New Card"<<endl;
     cout<<"[3] Delete Card"<<endl;
+    cout<<"[0] Return to Menu"<<endl;
     cout<<endl;
     cout<<"Enter option :";
     cin>>c;
@@ -343,7 +344,8 @@ void card_related()
         case 1 : show_card(); break;
         case 2 : create_card(); break;
         case 3 : delete_card(); break;
-        default: cout<<red<<"Invalid Option! Please Enter Again."; sleep(1); card_related();
+        case 0 : main_menu(); break;
+        default: cout<<red<<"Invalid Option! Please Enter Again."; cout<<endl; card_related();
     }
 }
 
@@ -1104,15 +1106,19 @@ void transfer()
         }
         else
         {
+            string idan,pasan,naman,pranam;
             balance-=amount;
             balance2+=amount;
             ofstream fileOut(IDNP + "balance" + ".txt");
             fileOut<<balance;
             fileOut.close();
             ofstream fileout(IDNP2 + "balance" + ".txt");
+            ifstream fal(IDNP2 + "data.txt");
+            fal>>idan>>pasan>>naman>>pranam;
             fileout<<balance2;
             fileout.close();
-            cout<<green<<"You succesfully transferred "<<amount<<" to "<<IDNP2<<endl;
+            fal.close();
+            cout<<green<<"You succesfully transferred "<<amount<<" to "<<naman<<" "<<pranam<<endl;
             sleep(1);
             system("clear");
             main_menu();
@@ -1185,7 +1191,7 @@ void main_menu()
     cout<<" / /|_/ / _ `/ / _ \    / /|_/ / -_) _ \/ // /"<<endl;
     cout<<"/_/  /_/\_,_/_/_//_/   /_/  /_/\__/_//_/\_,_/ "<<endl;
     cout<<endl; 
-    cout<<"Welcome Back,"<<nume<<"                        Available Balance "<<balance<<"$";
+    cout<<"Welcome Back,"<<nume<<"               Available Balance "<<balance<<"$";
     cout<<endl;
     cout<<endl;
     cout<<"[1] Deposit Amount                    [6] Modify account"<<endl;
