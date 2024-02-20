@@ -1277,6 +1277,7 @@ bool autentificare()
                 autentificare();
             }
         }  
+
 }
 
 void inregistrarile_noi()
