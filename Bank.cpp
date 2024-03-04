@@ -37,6 +37,7 @@ int a;
 int balance,b,balance2,amount;
 char rs;
 int status;
+float timp=0.5;
 
 
 int main();
@@ -100,7 +101,8 @@ void delete_card()
     if(!ile.is_open() and !dat.is_open() and !dat2.is_open() and !dat3.is_open() and !dat4.is_open())
     {
         cout<<yellow<<"You have no cards,redirecting. . ."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         card_related();
     }
@@ -119,14 +121,16 @@ void delete_card()
             {
                 remove((IDNP + "card.txt").c_str());
                 cout<<green<<"You have succesfully deleted your Mastercard "<<taip<<" card."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main_menu();
             }
             else 
             {
                 cout<<red<<"Incorrect Password,try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 delete_card();
             }
@@ -144,14 +148,16 @@ void delete_card()
             {
                 remove((IDNP + "card2.txt").c_str());
                 cout<<green<<"You have succesfully deleted your Mastercard "<<taip1<<" card."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main_menu();
             }
             else 
             {
                 cout<<red<<"Incorrect Password,try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 delete_card();
             }
@@ -169,14 +175,16 @@ void delete_card()
             {
                 remove((IDNP + "card3.txt").c_str());
                 cout<<green<<"You have succesfully deleted your Mastercard "<<taip2<<" card."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main_menu();
             }
             else 
             {
                 cout<<red<<"Incorrect Password,try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 delete_card();
             }
@@ -194,14 +202,16 @@ void delete_card()
             {
                 remove((IDNP + "card4.txt").c_str());
                 cout<<green<<"You have succesfully deleted your Mastercard "<<taip3<<" card."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main_menu();
             }
             else 
             {
                 cout<<red<<"Incorrect Password,try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 delete_card();
             }
@@ -219,14 +229,16 @@ void delete_card()
             {
                 remove((IDNP + "card5.txt").c_str());
                 cout<<green<<"You have succesfully deleted your Mastercard "<<taip4<<" card."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main_menu();
             }
             else 
             {
                 cout<<red<<"Incorrect Password,try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 delete_card();
             }
@@ -248,40 +260,42 @@ void show_card()
     {
         ile >> cd >> cv >> type >> date;
         cout<<"_________________________________________"<<endl;
-        cout<<"|                                       "<<endl;
-        cout<<"|  Your card details are:               "<<endl;
-        cout<<"|  Card Number : "<<cd<<"       "<<endl;
-        cout<<"|  CVV : "<<cv<<"                            "<<endl;
-        cout<<"|  Expiration Date : "<<date<<"              " << endl;
-        cout<<"|  Type : "<<type<<"                      "<<endl;
-        cout<<"|_______________________________________"<<endl;
+        cout<<"                                        "<<endl;
+        cout<<"   Your card details are:               "<<endl;
+        cout<<"   Card Number : "<<cd<<"       "<<endl;
+        cout<<"   CVV : "<<cv<<"                            "<<endl;
+        cout<<"   Expiration Date : "<<date<<"              " << endl;
+        cout<<"   Type : "<<type<<"                      "<<endl;
+        cout<<endl;
+        cout<<"________________________________________"<<endl;
     }
     if(dat.is_open())
     {
         string cd1 , cv1 , type1;
         dat >> cd1 >> cv1 >> type1 ;
         cout<<"_________________________________________"<<endl;
-        cout<<"|                                       "<<endl;
-        cout<<"|  Your card details are:               "<<endl;
-        cout<<"|  Card Number : "<<cd1<<"       "<<endl;
-        cout<<"|  CVV : "<<cv1<<"                            "<<endl;
-        cout<<"|  Expiration Date : "<<date<<"              " << endl;
-        cout<<"|  Type : "<<type1<<"                      "<<endl;
-        cout<<"|_______________________________________"<<endl;
-
+        cout<<"                                        "<<endl;
+        cout<<"   Your card details are:               "<<endl;
+        cout<<"   Card Number : "<<cd1<<"       "<<endl;
+        cout<<"   CVV : "<<cv1<<"                            "<<endl;
+        cout<<"   Expiration Date : "<<date<<"              " << endl;
+        cout<<"   Type : "<<type1<<"                      "<<endl;
+        cout<<endl;
+        cout<<"________________________________________"<<endl;
     }
     if(dat2.is_open())
     {
         string cdd,cvc,typ;
         dat2 >> cdd >> cvc >> typ;
         cout<<"_________________________________________"<<endl;
-        cout<<"|                                       "<<endl;
-        cout<<"|  Your card details are:               "<<endl;
-        cout<<"|  Card Number : "<<cdd<<"      "<<endl;
-        cout<<"|  CVV : "<<cvc<<"                            "<<endl;
-        cout<<"|  Expiration Date : "<<date<<"             " << endl;
-        cout<<"|  Type : "<<typ<<"                      "<<endl;
-        cout<<"|_______________________________________"<<endl;
+        cout<<"                                        "<<endl;
+        cout<<"   Your card details are:               "<<endl;
+        cout<<"   Card Number : "<<cdd<<"      "<<endl;
+        cout<<"   CVV : "<<cvc<<"                            "<<endl;
+        cout<<"   Expiration Date : "<<date<<"             " << endl;
+        cout<<"   Type : "<<typ<<"                      "<<endl;
+        cout<<endl;
+        cout<<"_______________________________________"<<endl;
 
     }
     if(dat3.is_open())
@@ -289,13 +303,14 @@ void show_card()
         string cdc , cvd , tipe;
         dat3 >> cdc >> cvd >> tipe;
         cout<<"_________________________________________"<<endl;
-        cout<<"|                                       "<<endl;
-        cout<<"|  Your card details are:               "<<endl;
-        cout<<"|  Card Number : "<<cdc<<"       "<<endl;
-        cout<<"|  CVV : "<<cvd<<"                            "<<endl;
-        cout<<"|  Expiration Date : "<<date<<"               " << endl;
-        cout<<"|  Type : "<<tipe<<"                      "<<endl;
-        cout<<"|_______________________________________"<<endl;
+        cout<<"                                      "<<endl;
+        cout<<"  Your card details are:               "<<endl;
+        cout<<"  Card Number : "<<cdc<<"       "<<endl;
+        cout<<"  CVV : "<<cvd<<"                            "<<endl;
+        cout<<"  Expiration Date : "<<date<<"               " << endl;
+        cout<<"  Type : "<<tipe<<"                      "<<endl;
+        cout<<endl;
+        cout<<"_______________________________________"<<endl;
 
     }
     if(dat4.is_open())
@@ -303,19 +318,21 @@ void show_card()
         string cdv,cvdc,tip;
         dat4 >> cdv >> cvdc >> tip;
         cout<<"_________________________________________"<<endl;
-        cout<<"|                                       "<<endl;
-        cout<<"|  Your card details are:               "<<endl;
-        cout<<"|  Card Number : "<<cdv<<"       "<<endl;
-        cout<<"|  CVV : "<<cvdc<<"                            "<<endl;
-        cout<<"|  Expiration Date : "<<date<<"                " << endl;
-        cout<<"|  Type : "<<tip<<"                      "<<endl;
-        cout<<"|_______________________________________"<<endl;
+        cout<<"                                        "<<endl;
+        cout<<"   Your card details are:               "<<endl;
+        cout<<"   Card Number : "<<cdv<<"       "<<endl;
+        cout<<"   CVV : "<<cvdc<<"                            "<<endl;
+        cout<<"   Expiration Date : "<<date<<"                " << endl;
+        cout<<"   Type : "<<tip<<"                      "<<endl;
+        cout<<endl;
+        cout<<"________________________________________"<<endl;
     }
     int cp; 
         if(!ile.is_open() and !dat.is_open() and !dat2.is_open() and !dat3.is_open() and !dat4.is_open())
     {
         cout<<yellow<<"You have no cards,redirecting. . ."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         card_related();
     }
@@ -324,7 +341,7 @@ void show_card()
     switch(cp)
     {
         case 1 : system("clear"); card_related(); break;
-        default : cout<<red<<"There is no such option like this."<<endl; sleep(1); system("clear"); show_card();
+        default : cout<<red<<"There is no such option like this."<<endl;  cin.get(); cin.ignore(); system("clear"); show_card();
     }
 }
 
@@ -357,7 +374,8 @@ void worldclass()
     if(balance < 70)
     {
         cout<<red<<"You don't have enough funds"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         create_card();
     }
@@ -432,8 +450,9 @@ void worldclass()
                             }
                             else
                             {
-                                cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl;
-                                sleep(1);
+                                cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl; 
+                                cin.get();
+                                cin.ignore();
                                 system("clear");
                                 main_menu();
                             }
@@ -446,7 +465,8 @@ void worldclass()
             file.close();
             cout<<"You have just became the owner of the Mastercard Worldclass Card"<<endl;
             cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-            sleep(5);
+            cin.get();
+            cin.ignore();
             main_menu();
         }
         else if(rs == 'n' or rs == 'N')
@@ -462,7 +482,8 @@ void elite()
     if(balance<50)
     {
         cout<<red<<"You don't have enough funds"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         create_card();
     }
@@ -537,7 +558,8 @@ void elite()
                             else 
                             {
                                 cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl;
-                                sleep(1);
+                                cin.get();
+                                cin.ignore();
                                 system("clear");
                                 main_menu();
                             }
@@ -550,7 +572,8 @@ void elite()
                 file.close();
             cout<<"You have just became the owner of the Mastercard Elite Card"<<endl;
             cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-            sleep(5);
+            cin.get();
+            cin.ignore();
             main_menu();
         }
         else if(rs == 'n' or rs == 'N')
@@ -565,7 +588,8 @@ void platinum()
     if(balance < 30)
     {
         cout<<red<<"You don't have enough funds"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         create_card();
     }
@@ -640,7 +664,8 @@ void platinum()
                             else
                             {
                             cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl;
-                            sleep(1);
+                            cin.get();
+                            cin.ignore();
                             system("clear");
                             main_menu();
                             }
@@ -653,7 +678,8 @@ void platinum()
             file.close();
             cout<<"You have just became the owner of the Mastercard Platinum Card"<<endl;
             cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;                
-            sleep(5);
+            cin.get();
+            cin.ignore();;
             main_menu();
         }
         else if(rs == 'n' or rs == 'N')
@@ -669,7 +695,8 @@ void gold()
     if(balance < 15)
     {
         cout<<red<<"You don't have enough funds"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         create_card();
     }
@@ -747,7 +774,8 @@ void gold()
                             else
                             {
                             cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl;
-                            sleep(1);
+                            cin.get();
+                            cin.ignore();
                             system("clear");
                             main_menu();
                             }
@@ -760,7 +788,8 @@ void gold()
             file.close();
             cout<<"You have just became the owner of the Mastercard Gold Card"<<endl;
             cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-            sleep(5);
+            cin.get();
+            cin.ignore();
             main_menu();
         }
         else if(rs == 'n' or rs == 'N')
@@ -837,7 +866,8 @@ void classic()
                             else
                             {
                                 cout<<red<<"You reached the limit to creating cards. (5/5)"<<endl;
-                                sleep(1);
+                                cin.get();
+                                cin.ignore();
                                 system("clear");
                                 main_menu();
                             }
@@ -850,7 +880,8 @@ void classic()
             file.close();
         cout<<"You have just became the owner of the Mastercard Classic Card"<<endl;
         cout<<"Please keep your CVV safe, as it is used for identification purposes."<<endl;
-        sleep(5);
+        cin.get();
+        cin.ignore();
         main_menu();
     }
     else if(rs == 'n' or rs == 'N')
@@ -915,7 +946,7 @@ void create_card()
         case 4 : elite(); break;
         case 5 : worldclass(); break;
         case 99 : system("clear"); main_menu(); break;
-        default : cout<<red<<"Enter a valid option."; sleep(1); system("clear"); create_card();
+        default : cout<<red<<"Enter a valid option.";  cin.get(); cin.ignore(); system("clear"); create_card();
 
     }
 }
@@ -928,7 +959,7 @@ void change_name()
     cin>>nume;
     cout<<"Do you wish to change the surname aswell?[Y/N]";
     cin>>rs;
-    if (rs=='y'|| rs=='Y')
+    if (rs=='y' or rs=='Y')
     {
         cout<<"Enter new surname: ";
         cin>>prenume;
@@ -936,7 +967,8 @@ void change_name()
         fout<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume;
         fout.close();
         cout<<green<<"Name and Surname changed succesfully!"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
@@ -945,14 +977,16 @@ void change_name()
         ofstream fiout(IDNP + "data.txt");
         fiout<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
         cout<<green<<"Name changed succesfully!"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
     else
     {
         cout<<red;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         change_name();
     }
@@ -967,7 +1001,8 @@ void change_password()
     if(password1 != password)
     {
         cout<<red<<"Incorrect password,try again"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         change_password();
     }
@@ -980,7 +1015,8 @@ void change_password()
         if(password2.length() < 6)
         {
             cout<<yellow<<"Password lenght should be at least 6 characters long,try again"<<endl;
-            sleep(1);
+            cin.get();
+            cin.ignore();
             modify_account();
         }
         else
@@ -991,14 +1027,16 @@ void change_password()
                 fout<<IDNP<<" "<<password1<<" "<<nume<<" "<<prenume;
                 fout.close();
                 cout<<green<<"Password changed successfully!"<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 main();
             }
             else
             {
                 cout<<red<<"Passwords do not match, try again."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 change_password();
             }
@@ -1022,7 +1060,7 @@ void modify_account()
         case 1 : change_password(); break;
         case 2 : change_name(); break;
         case 99 : main_menu(); break;
-        default : sleep(1); cout<<red; modify_account();
+        default :  cin.get(); cin.ignore(); cout<<red; modify_account();
     }
 }
 
@@ -1040,7 +1078,8 @@ void close_account()
             remove((IDNP + "data.txt").c_str()); 
             remove((IDNP + "balance.txt").c_str());
             cout<<magenta<<"We are sad seeing you leaving us behind,account deleted succesfully."<<endl;
-            sleep(1);
+            cin.get();
+            cin.ignore();
             system("clear");
             main();
         }
@@ -1052,14 +1091,16 @@ void close_account()
     }
     else if(rs=='N' or rs=='n')
     {
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
     else
     {
         cout<<red<<"Enter a valid option."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
@@ -1076,7 +1117,8 @@ void transfer()
     {
         
         cout<<yellow<<"You can't send money to yourself."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         transfer();
     }
     ifstream fileN(IDNP2 + "balance" + ".txt" );
@@ -1084,7 +1126,8 @@ void transfer()
     {
         
         cout<<red<<"This account appears to not exist"<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
@@ -1100,7 +1143,8 @@ void transfer()
         {
 
             cout<<red<<"You don't have enough money,try again."<<endl;
-            sleep(1);
+            cin.get();
+            cin.ignore();
             system("clear");
             main_menu();
         }
@@ -1119,7 +1163,8 @@ void transfer()
             fileout.close();
             fal.close();
             cout<<green<<"You succesfully transferred "<<amount<<" to "<<naman<<" "<<pranam<<endl;
-            sleep(1);
+            cin.get();
+            cin.ignore();
             system("clear");
             main_menu();
         }
@@ -1137,7 +1182,8 @@ void withdraw()
     if(balance<b)
     {
         cout<<red<<"You don't have sufficient funds,try again."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         main_menu();
     }
@@ -1154,7 +1200,6 @@ void withdraw()
 }
 void logout()
 {
-    sleep(1);
     system("clear");
     main();
 }
@@ -1184,7 +1229,6 @@ void main_menu()
     file>>balance;
     file.close();
     cout<<endl;
-    sleep(1);
     system("clear");
     cout<<"   __  ___     _          __  ___             "<<endl;     
     cout<<"  /  |/  /__ _(_)__      /  |/  /__ ___  __ __"<<endl;
@@ -1214,7 +1258,7 @@ void main_menu()
         case 6 : modify_account(); break;
         case 7 : card_related(); break;
         case 99 : system("clear"); break;
-        default : cout<<red<<"Enter a valid option.";  sleep(1); system("clear"); main_menu();
+        default : cout<<red<<"Enter a valid option."; cin.get(); cin.ignore(); system("clear"); main_menu();
     }             
 }
 
@@ -1260,8 +1304,9 @@ bool autentificare()
     ifstream file(IDNP + "data" + ".txt");
         if(!file.is_open())
         {
-            cout << red << "       Invalid Credentials."<<endl; 
-            sleep(1);
+            cout << red << "       Invalid Credentials."<<endl;
+            cin.get();
+            cin.ignore(); 
             system("clear");
             autentificare();  
         }
@@ -1272,7 +1317,8 @@ bool autentificare()
             else
             {
                 cout<< red <<"       Invalid Credentials."<<endl;
-                sleep(1);
+                cin.get();
+                cin.ignore();
                 system("clear");
                 autentificare();
             }
@@ -1296,7 +1342,8 @@ void inregistrarile_noi()
     if(password.length() < 6 )
     {
         cout<< yellow << "       Password lenght should be at least 6 characters,try again."<<endl;
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         inregistrarile_noi();
     }
@@ -1305,7 +1352,8 @@ void inregistrarile_noi()
     if(IDNP.length() != 13)
     {
         cout << yellow << "       The Identification Number should be 13 characters,try again.";
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         inregistrarile_noi();
     }
@@ -1318,7 +1366,8 @@ void inregistrarile_noi()
         {
             cout<<endl;
             cout <<red<< "       An Account under this Identification Number was already created,you can choose to authentificate."<<endl;
-            sleep(1);
+             cin.get();
+             cin.ignore();
             system("clear");
             main();
         }
@@ -1330,7 +1379,8 @@ void inregistrarile_noi()
         myfile.open(IDNP + "data" + ".txt"); 
         myfile<<IDNP<<" "<<password<<" "<<nume<<" "<<prenume; 
         myfile.close();
-        sleep(1);
+        cin.get();
+        cin.ignore();
         system("clear");
         cout<<endl;
         main();
@@ -1360,9 +1410,9 @@ int main()
     {
         case 1 : autentificare(); break;
         case 2 : inregistrarile_noi(); break;
-        case 3 :  cout<<yellow<<"       Coming Soon..."<<endl; sleep(1); system("clear"); main(); break;
+        case 3 :  cout<<yellow<<"       Coming Soon..."<<endl;  cin.get(); cin.ignore(); system("clear"); main(); break;
         case 99 : system("clear"); break;
-        default : sleep(1); cout<<red; system("clear"); main();
+        default :  cin.get(); cin.ignore(); cout<<red; system("clear"); main();
     }
 }
 
