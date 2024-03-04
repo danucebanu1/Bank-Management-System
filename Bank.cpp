@@ -41,10 +41,12 @@ float timp=0.5;
 
 
 int main();
+void main_copy();
 void inregistrarile_noi();
 bool autentificare();
 void schimb_valutar();
 void main_menu();
+void main_menu_copy();
 void deposit();
 void logout();
 void transfer();
@@ -104,6 +106,7 @@ void delete_card()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         card_related();
     }
     cout << "\nChoose the type of card you want to delete: ";
@@ -132,6 +135,7 @@ void delete_card()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 delete_card();
             }
         }
@@ -159,6 +163,7 @@ void delete_card()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 delete_card();
             }
         } 
@@ -186,6 +191,7 @@ void delete_card()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 delete_card();
             }
         }
@@ -213,6 +219,7 @@ void delete_card()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 delete_card();
             }
         }
@@ -240,6 +247,7 @@ void delete_card()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 delete_card();
             }
         }
@@ -334,14 +342,15 @@ void show_card()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         card_related();
     }
     cout<<endl<<"[1] Return Back to Menu";
     cin>>cp;
     switch(cp)
     {
-        case 1 : system("clear"); card_related(); break;
-        default : cout<<red<<"There is no such option like this."<<endl;  cin.get(); cin.ignore(); system("clear"); show_card();
+        case 1 : system("clear"); main_menu_copy(); card_related(); break;
+        default : cout<<red<<"There is no such option like this."<<endl;  cin.get(); cin.ignore(); system("clear"); main_menu_copy(); show_card();
     }
 }
 
@@ -362,7 +371,7 @@ void card_related()
         case 2 : create_card(); break;
         case 3 : delete_card(); break;
         case 0 : main_menu(); break;
-        default: cout<<red<<"Invalid Option! Please Enter Again."; cout<<endl; card_related();
+        default: cout<<red<<"Invalid Option! Please Enter Again."; cout<<endl; main_menu_copy(); card_related();
     }
 }
 
@@ -377,6 +386,7 @@ void worldclass()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         create_card();
     }
     else if(balance >= 70)
@@ -472,6 +482,7 @@ void worldclass()
         else if(rs == 'n' or rs == 'N')
         {
             system("clear");
+            main_menu_copy();
             create_card();
         }
     }
@@ -485,6 +496,7 @@ void elite()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         create_card();
     }
 
@@ -579,6 +591,7 @@ void elite()
         else if(rs == 'n' or rs == 'N')
         {
             system("clear");
+            main_menu_copy();
             create_card();
         }
 }
@@ -591,6 +604,7 @@ void platinum()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         create_card();
     }
     else
@@ -685,6 +699,7 @@ void platinum()
         else if(rs == 'n' or rs == 'N')
         {
             system("clear");
+            main_menu_copy();
             create_card();
         }
     }
@@ -698,6 +713,7 @@ void gold()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         create_card();
     }
     else
@@ -795,6 +811,7 @@ void gold()
         else if(rs == 'n' or rs == 'N')
         {
             system("clear");
+            main_menu_copy();
             create_card();
         }   
     }
@@ -887,6 +904,7 @@ void classic()
     else if(rs == 'n' or rs == 'N')
     {
         system("clear");
+        main_menu_copy();
         create_card();
     }
 }
@@ -946,7 +964,7 @@ void create_card()
         case 4 : elite(); break;
         case 5 : worldclass(); break;
         case 99 : system("clear"); main_menu(); break;
-        default : cout<<red<<"Enter a valid option.";  cin.get(); cin.ignore(); system("clear"); create_card();
+        default : cout<<red<<"Enter a valid option.";  cin.get(); cin.ignore(); system("clear"); main_menu_copy(); create_card();
 
     }
 }
@@ -988,6 +1006,7 @@ void change_name()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         change_name();
     }
 }
@@ -1004,6 +1023,7 @@ void change_password()
         cin.get();
         cin.ignore();
         system("clear");
+        main_menu_copy();
         change_password();
     }
     else
@@ -1017,6 +1037,7 @@ void change_password()
             cout<<yellow<<"Password lenght should be at least 6 characters long,try again"<<endl;
             cin.get();
             cin.ignore();
+            main_menu_copy();
             modify_account();
         }
         else
@@ -1038,6 +1059,7 @@ void change_password()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_menu_copy();
                 change_password();
             }
         }
@@ -1102,7 +1124,8 @@ void close_account()
         cin.get();
         cin.ignore();
         system("clear");
-        main_menu();
+        main_menu_copy();
+        close_account();
     }
 }
 
@@ -1129,7 +1152,9 @@ void transfer()
         cin.get();
         cin.ignore();
         system("clear");
-        main_menu();
+        main_menu_copy();
+        transfer();
+
     }
     else
     {
@@ -1146,7 +1171,8 @@ void transfer()
             cin.get();
             cin.ignore();
             system("clear");
-            main_menu();
+            main_menu_copy();
+            transfer();
         }
         else
         {
@@ -1185,7 +1211,8 @@ void withdraw()
         cin.get();
         cin.ignore();
         system("clear");
-        main_menu();
+        main_menu_copy();
+        withdraw();
     }
     else
     {
@@ -1218,7 +1245,36 @@ void deposit()
     fileOut << balance;
     fileOut.close();
     cout<<green<<"You just replenished your account with "<<b<<"$"<<endl;
+    cin.get();
+    cin.ignore();
     main_menu();
+}
+void main_menu_copy()
+{
+    string cd , cv , type , date; 
+    cout<<white;
+    int a;
+    ifstream file(IDNP + "balance" + ".txt");
+    file>>balance;
+    file.close();
+    cout<<endl;
+    system("clear");
+    cout<<"   __  ___     _          __  ___             "<<endl;     
+    cout<<"  /  |/  /__ _(_)__      /  |/  /__ ___  __ __"<<endl;
+    cout<<" / /|_/ / _ `/ / _ \    / /|_/ / -_) _ \/ // /"<<endl;
+    cout<<"/_/  /_/\_,_/_/_//_/   /_/  /_/\__/_//_/\_,_/ "<<endl;
+    cout<<endl; 
+    cout<<"Welcome Back,"<<nume<<"               Available Balance "<<balance<<"$";
+    cout<<endl;
+    cout<<endl;
+    cout<<"[1] Deposit Amount                    [6] Modify account"<<endl;
+    cout<<"[2] Withdraw Amount                   [7] Card Related Options"<<endl;
+    cout<<"[3] Transfer Money                    "<<endl;
+    cout<<"[4] Logout"<<endl;
+    cout<<"[5] Close Account"<<endl;
+    cout<<endl;
+    cout<<"[99] Exit"<<endl;
+    cout<<endl;
 }
 void main_menu()
 {
@@ -1308,6 +1364,7 @@ bool autentificare()
             cin.get();
             cin.ignore(); 
             system("clear");
+            main_copy();
             autentificare();  
         }
         while (file >> id >> pw >> nm >> pn)
@@ -1320,6 +1377,7 @@ bool autentificare()
                 cin.get();
                 cin.ignore();
                 system("clear");
+                main_copy();
                 autentificare();
             }
         }  
@@ -1345,6 +1403,7 @@ void inregistrarile_noi()
         cin.get();
         cin.ignore();
         system("clear");
+        main_copy();
         inregistrarile_noi();
     }
     cout<<"       IDNP:";
@@ -1355,6 +1414,7 @@ void inregistrarile_noi()
         cin.get();
         cin.ignore();
         system("clear");
+        main_copy();
         inregistrarile_noi();
     }
     else
@@ -1386,6 +1446,24 @@ void inregistrarile_noi()
         main();
         }
     }
+}
+void main_copy()
+{
+    system("clear");
+    cout<<white;
+    int optiune;   
+    cout<<"    _   __      __  _                   __   __                __      __  ___      __    __                     "<<endl;
+    cout<<"   / | / /___ _/ /_(_)___  ____  ____ _/ /  / /_  ____ _____  / /__   /  |/  /___  / /___/ /___ _   ______ _     "<<endl;
+    cout<<"  /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / __ \/ __ `/ __ \/ //_/  / /|_/ / __ \/ / __  / __ \ | / / __ `/      "<<endl;
+    cout<<" / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / /_/ / /_/ / / / / ,<    / /  / / /_/ / / /_/ / /_/ / |/ / /_/ /      "<<endl;
+    cout<<"/_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_.___/\__,_/_/ /_/_/|_|  /_/  /_/\____/_/\__,_/\____/|___/\__,_/     "<<endl;
+    cout<<endl;
+    cout<<"       Welcome to National Bank of Moldova                                Made with love by guess <3 "<<endl;
+    cout<<endl;
+    cout<<"       [1] Login into your Bank Account                                                    [99] Exit"<<endl;
+    cout<<"       [2] Register a new Bank Account"<<endl;
+    cout<<"       [3] Currency Exchange                                                                         "<<endl;
+    cout<<endl;
 }
 int main() 
 {
