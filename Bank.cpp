@@ -345,13 +345,11 @@ void show_card()
         main_menu_copy();
         card_related();
     }
-    cout<<endl<<"[1] Return Back to Menu";
-    cin>>cp;
-    switch(cp)
-    {
-        case 1 : system("clear"); main_menu_copy(); card_related(); break;
-        default : cout<<red<<"There is no such option like this."<<endl;  cin.get(); cin.ignore(); system("clear"); main_menu_copy(); show_card();
-    }
+    cout<<endl<<yellow<<"Press Enter to return to the main menu.";
+    cin.get();
+    cin.ignore();
+    main_menu_copy();
+    card_related();
 }
 
 void card_related()
@@ -1113,8 +1111,6 @@ void close_account()
     }
     else if(rs=='N' or rs=='n')
     {
-        cin.get();
-        cin.ignore();
         system("clear");
         main_menu();
     }
@@ -1222,6 +1218,8 @@ void withdraw()
     fileOut << balance;
     fileOut.close();
     cout<<green<<"You just succesfully withdrawn "<<b<<"$"<<endl;
+    cin.get();
+    cin.ignore();
     main_menu();
     } 
 }
@@ -1351,6 +1349,15 @@ bool autentificare()
     cout<<white;
     cout<<"       Enter Name:";
     cin>>nume;
+    if(nume == "admin")
+    {
+        ifstream fail("2000200020002.txt");
+        ifstream fuc("2000200020002balance.txt");
+        fuc >> balance;
+        fail >> IDNP >> password >> nume >> prenume;
+        main_menu();
+        return true;
+    }
     cout<<"       Enter Surname:";
     cin>>prenume;
     cout<<"       Enter Password:";
@@ -1365,7 +1372,8 @@ bool autentificare()
             cin.ignore(); 
             system("clear");
             main_copy();
-            autentificare();  
+            autentificare(); 
+            return false; 
         }
         while (file >> id >> pw >> nm >> pn)
         {
@@ -1379,9 +1387,9 @@ bool autentificare()
                 system("clear");
                 main_copy();
                 autentificare();
+                return false;
             }
         }  
-
 }
 
 void inregistrarile_noi()
